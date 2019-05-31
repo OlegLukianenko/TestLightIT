@@ -1,6 +1,7 @@
 package lightIT.test.application.di.viewmodel;
 
 import dagger.Subcomponent;
+import lightIT.test.application.viewmodel.DescriptionFragmentViewModel;
 import lightIT.test.application.viewmodel.ProductFragmentViewModel;
 import lightIT.test.application.viewmodel.LoginFragmentViewModel;
 import lightIT.test.application.viewmodel.SplashActivityViewModel;
@@ -15,7 +16,9 @@ public interface ViewModelComponent {
 
     SplashActivityViewModel splashActivityViewModel();
 
-    ProductFragmentViewModel firstFragmentViewModel();
+    ProductFragmentViewModel productFragmentViewModel();
 
     LoginFragmentViewModel loginFragmentViewModel();
+
+    DescriptionFragmentViewModel descriptionFragmentViewModel();
 }

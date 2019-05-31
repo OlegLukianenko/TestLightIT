@@ -21,7 +21,7 @@ public class ProductRecyclerItemBindingImpl extends ProductRecyclerItemBinding i
     private final android.support.constraint.ConstraintLayout mboundView0;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback1;
+    private final android.view.View.OnClickListener mCallback2;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -41,7 +41,7 @@ public class ProductRecyclerItemBindingImpl extends ProductRecyclerItemBinding i
         this.title.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback1 = new lightIT.test.application.generated.callback.OnClickListener(this, 1);
+        mCallback2 = new lightIT.test.application.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -140,7 +140,7 @@ public class ProductRecyclerItemBindingImpl extends ProductRecyclerItemBinding i
         if ((dirtyFlags & 0x4L) != 0) {
             // api target 1
 
-            this.mboundView0.setOnClickListener(mCallback1);
+            this.mboundView0.setOnClickListener(mCallback2);
         }
     }
     // Listener Stub Implementations

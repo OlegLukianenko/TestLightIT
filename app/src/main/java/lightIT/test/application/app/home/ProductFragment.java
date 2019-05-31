@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -78,6 +77,19 @@ public class ProductFragment extends BaseFragment<FragmentProductBinding> implem
 
     @Override
     public void onProductItemClick(Product product) {
+        if (getActivity() != null) {
+//            DescriptionFragment descriptionFragment = new DescriptionFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putInt("login", product.id);
+//            descriptionFragment.setArguments(bundle);
+//            ((MainActivity) getActivity()).showFragment(descriptionFragment);
 
+
+            DescriptionFragment descriptionFragment = new DescriptionFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("product", product);
+            descriptionFragment.setArguments(bundle);
+            ((MainActivity) getActivity()).showFragment(descriptionFragment);
+        }
     }
 }

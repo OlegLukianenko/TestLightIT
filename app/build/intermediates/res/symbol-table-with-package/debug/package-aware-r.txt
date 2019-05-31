@@ -707,6 +707,7 @@ id all
 id always
 id appName
 id async
+id backArrow
 id barrier
 id beginning
 id blocking
@@ -731,6 +732,7 @@ id customPanel
 id dataBinding
 id decor_content_parent
 id default_activity_button
+id description
 id dimensions
 id direct
 id disableHome
@@ -830,6 +832,7 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id text
 id text2
+id textPricing
 id textProducts
 id textSpacerNoButtons
 id textSpacerNoTitle
@@ -882,6 +885,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_splash
+layout fragment_description
 layout fragment_login
 layout fragment_product
 layout layout_produst_progress_bar

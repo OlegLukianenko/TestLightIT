@@ -4,6 +4,10 @@
         "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/fragment_login.xml"
     },
     {
+        "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_description.xml",
+        "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/fragment_description.xml"
+    },
+    {
         "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_first.xml",
         "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/fragment_first.xml"
     },
