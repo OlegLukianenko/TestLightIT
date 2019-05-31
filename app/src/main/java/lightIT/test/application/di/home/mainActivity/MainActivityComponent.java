@@ -3,10 +3,10 @@ package lightIT.test.application.di.home.mainActivity;
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
 import lightIT.test.application.app.home.MainActivity;
-import lightIT.test.application.di.FragmentBuilder;
+import lightIT.test.application.di.MainFragmentBuilder;
 
 @Subcomponent(modules = {
-        FragmentBuilder.class,
+        MainFragmentBuilder.class,
         MainActivityModule.class})
 
 public interface MainActivityComponent extends AndroidInjector<MainActivity> {

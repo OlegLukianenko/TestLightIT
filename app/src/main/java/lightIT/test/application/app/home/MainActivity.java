@@ -13,7 +13,8 @@ import lightIT.test.application.base.BaseActivity;
 import lightIT.test.application.databinding.ActivityMainBinding;
 
 
-public class MainActivity extends BaseActivity<ActivityMainBinding> implements HasSupportFragmentInjector {
+public class MainActivity extends BaseActivity<ActivityMainBinding> implements
+        HasSupportFragmentInjector {
 
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
@@ -28,7 +29,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements H
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null)
-            showFragment(new FirstFragment());
+            showFragment(new ProductFragment());
     }
 
     public void showFragment(Fragment fragment) {

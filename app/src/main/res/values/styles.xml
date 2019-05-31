@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="LoginField">
+        <item name="android:background">@drawable/bg_btn_white_border_rounded</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:textColorHint">@color/grey1</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

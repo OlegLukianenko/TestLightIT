@@ -57,7 +57,6 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
     }
 
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -71,6 +70,8 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
 
     private void startMainActivity() {
         viewModel.getProgressBarEvent().postValue(false);
+        //showFragment(new LoginFragment());
+
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
         finish();

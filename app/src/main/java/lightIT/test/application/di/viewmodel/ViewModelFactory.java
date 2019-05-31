@@ -10,7 +10,8 @@ import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 
-import lightIT.test.application.viewmodel.FirstFragmentViewModel;
+import lightIT.test.application.viewmodel.ProductFragmentViewModel;
+import lightIT.test.application.viewmodel.LoginFragmentViewModel;
 import lightIT.test.application.viewmodel.SplashActivityViewModel;
 
 public class ViewModelFactory implements ViewModelProvider.Factory {
@@ -21,7 +22,8 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     public ViewModelFactory(ViewModelComponent component) {
         creators = new ArrayMap<>();
         creators.put(SplashActivityViewModel.class, component::splashActivityViewModel);
-        creators.put(FirstFragmentViewModel.class, component::firstFragmentViewModel);
+        creators.put(ProductFragmentViewModel.class, component::firstFragmentViewModel);
+        creators.put(LoginFragmentViewModel.class, component::loginFragmentViewModel);
     }
 
     @NonNull

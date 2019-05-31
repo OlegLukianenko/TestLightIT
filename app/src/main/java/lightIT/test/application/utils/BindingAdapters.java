@@ -11,7 +11,7 @@ public class BindingAdapters {
 
     @BindingAdapter("setAvatar")
     public static void setAvatar(ImageView imageView, String url) {
-        Picasso.get().load(url).transform(new PicassoCircleTransform()).placeholder(R.drawable.ic_user_placeholder).into(imageView);
+        Picasso.get().load(url).placeholder(R.drawable.ic_user_placeholder).into(imageView);
     }
 
 }

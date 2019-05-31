@@ -5,7 +5,7 @@ import dagger.internal.Factory;
 import javax.inject.Provider;
 import lightIT.test.application.data.repository.RepositoryApi;
 
-public final class FirstFragmentViewModel_Factory implements Factory<FirstFragmentViewModel> {
+public final class FirstFragmentViewModel_Factory implements Factory<ProductFragmentViewModel> {
   private final Provider<RepositoryApi> repositoryApiProvider;
 
   public FirstFragmentViewModel_Factory(Provider<RepositoryApi> repositoryApiProvider) {
@@ -13,13 +13,13 @@ public final class FirstFragmentViewModel_Factory implements Factory<FirstFragme
   }
 
   @Override
-  public FirstFragmentViewModel get() {
+  public ProductFragmentViewModel get() {
     return provideInstance(repositoryApiProvider);
   }
 
-  public static FirstFragmentViewModel provideInstance(
+  public static ProductFragmentViewModel provideInstance(
       Provider<RepositoryApi> repositoryApiProvider) {
-    FirstFragmentViewModel instance = new FirstFragmentViewModel();
+    ProductFragmentViewModel instance = new ProductFragmentViewModel();
     FirstFragmentViewModel_MembersInjector.injectRepositoryApi(
         instance, repositoryApiProvider.get());
     return instance;
@@ -30,7 +30,7 @@ public final class FirstFragmentViewModel_Factory implements Factory<FirstFragme
     return new FirstFragmentViewModel_Factory(repositoryApiProvider);
   }
 
-  public static FirstFragmentViewModel newFirstFragmentViewModel() {
-    return new FirstFragmentViewModel();
+  public static ProductFragmentViewModel newFirstFragmentViewModel() {
+    return new ProductFragmentViewModel();
   }
 }

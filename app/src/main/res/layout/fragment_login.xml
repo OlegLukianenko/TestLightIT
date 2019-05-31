@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="contentDescription">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="lightIT.test.application.viewmodel.LoginFragmentViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cardinal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/vInscription"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="41:30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25"
+            app:layout_constraintWidth_percent="0.65" />
+
+        <android.support.constraint.ConstraintLayout
+            android:visibility="gone"
+            android:id="@+id/loginViewsWrap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/etUsername"
+                style="@style/LoginField"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/hint_username"
+                android:inputType="textWebEmailAddress"
+                android:text="user_model_2"
+                app:layout_constraintBottom_toTopOf="@+id/etPassword"
+                app:layout_constraintDimensionRatio="26:3.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.8"
+                tools:text="user.user@user.com" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                style="@style/LoginField"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="24dp"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:text="secret"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_h_1"
+                app:layout_constraintDimensionRatio="26:3.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.8"
+                tools:text="Password" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_btn_white_border_rounded"
+
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintDimensionRatio="26:3.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_h_1"
+                app:layout_constraintWidth_percent="0.8" />
+
+            <TextView
+                android:id="@+id/forgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/string_forgot_password"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!--<com.wang.avi.AVLoadingIndicatorView-->
+                <!--android:id="@+id/progressBar"-->
+                <!--style="@style/AVLoadingIndicatorView.Small"-->
+                <!--android:layout_width="45dp"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:visibility="@{safeUnbox(viewModel.isLoginButtonClickable()) ? view.GONE : view.VISIBLE}"-->
+                <!--app:indicatorName="BallPulseIndicator"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/btnLogin"-->
+                <!--app:layout_constraintEnd_toEndOf="@+id/btnLogin"-->
+                <!--app:layout_constraintStart_toStartOf="@+id/btnLogin"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/btnLogin" />-->
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_h_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.78" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

@@ -18,12 +18,15 @@
     <string name="change_user">Change</string>
     <string name="ok">Ok</string>
 
-    <string name="repos">Repos:</string>
-    <string name="followers">Followers:</string>
-    <string name="gists">Gists:</string>
 
     <string name="poor_internet_connection">Poor internet connection. Please, try again.</string>
 
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="string_forgot_password"><u>Forgot your password?</u></string>
+
+
+    <string name="icon_url">http://smktesting.herokuapp.com/static/</string>
 
 
 </resources>
