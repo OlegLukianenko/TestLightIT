@@ -10,6 +10,10 @@
             type="lightIT.test.application.viewmodel.DescriptionFragmentViewModel" />
 
         <variable
+            name="view"
+            type="android.view.View" />
+
+        <variable
             name="handler"
             type="lightIT.test.application.app.home.DescriptionFragment" />
     </data>
@@ -156,7 +160,9 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/bg_btn_blue_border_rounded"
-                android:text="@string/submit_review"
+                android:text="@{safeUnbox(viewModel.getPostButtonClickable()) ? @string/submit_review : &quot;&quot;}"
+                android:clickable="@{viewModel.getPostButtonClickable()}"
+                android:onClick="@{() -> viewModel.postRequestForReview(etReview.getText().toString(), (int)ratingBar.getRating(), viewModel.getDescriptionFromApi().id)}"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="12sp"
@@ -169,8 +175,10 @@
             <com.wang.avi.AVLoadingIndicatorView
                 android:id="@+id/progressBar"
                 style="@style/AVLoadingIndicatorView.Small"
-                android:layout_width="45dp"
+                android:layout_width="40dp"
                 android:layout_height="0dp"
+                android:elevation="2dp"
+                android:visibility="@{viewModel.getPostButtonClickable() ? view.GONE : view.VISIBLE}"
                 app:indicatorName="BallPulseIndicator"
                 app:layout_constraintBottom_toBottomOf="@+id/btnReview"
                 app:layout_constraintEnd_toEndOf="@+id/btnReview"

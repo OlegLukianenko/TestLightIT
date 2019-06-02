@@ -43,6 +43,7 @@ public class ProductFragment extends BaseFragment<FragmentProductBinding> implem
         super.onViewCreated(view, savedInstanceState);
         binding.setViewModel(viewModel);
         binding.setHandler(this);
+        binding.setLifecycleOwner(this);
 
         viewModel.sendProductRequest();
         viewModel.getProgressBarEvent().postValue(true);
@@ -78,13 +79,6 @@ public class ProductFragment extends BaseFragment<FragmentProductBinding> implem
     @Override
     public void onProductItemClick(Product product) {
         if (getActivity() != null) {
-//            DescriptionFragment descriptionFragment = new DescriptionFragment();
-//            Bundle bundle = new Bundle();
-//            bundle.putInt("login", product.id);
-//            descriptionFragment.setArguments(bundle);
-//            ((MainActivity) getActivity()).showFragment(descriptionFragment);
-
-
             DescriptionFragment descriptionFragment = new DescriptionFragment();
             Bundle bundle = new Bundle();
             bundle.putParcelable("product", product);

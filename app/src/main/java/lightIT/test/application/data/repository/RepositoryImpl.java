@@ -10,7 +10,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import lightIT.test.application.data.retrofit.ResponseWrap;
+import lightIT.test.application.data.retrofit.request.ReviewRequest;
 import lightIT.test.application.data.retrofit.response.Product;
+import lightIT.test.application.data.retrofit.response.Review;
+import lightIT.test.application.data.retrofit.response.ReviewResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,6 +70,68 @@ public class RepositoryImpl implements RepositoryApi {
         });
     }
 
+    @Override
+    public void getReviewListFromApi(int productId, MutableLiveData<ResponseWrap<List<Review>>> reviewMutableLiveData) {
+        Call<List<Review>> messages = serverApi.getReviewList(productId);
+        messages.enqueue(new Callback<List<Review>>() {
+            @Override
+            public void onResponse(Call<List<Review>> call, Response<List<Review>> response) {
+                ResponseWrap<List<Review>> responseWrap;
+                if (response.isSuccessful()) {
+                    responseWrap = new ResponseWrap<>(response.isSuccessful(), response.code(), response.body());
+                } else {
+                    responseWrap = new ResponseWrap<>(response.isSuccessful(), response.code(), getErrorMessage(response));
+                }
+
+                reviewMutableLiveData.postValue(responseWrap);
+            }
+
+            @Override
+            public void onFailure(Call<List<Review>> call, Throwable t) {
+                ResponseWrap<List<Review>> responseWrap;
+
+                if (t instanceof SocketTimeoutException) {
+                    responseWrap = new ResponseWrap<>(false, TIMEOUT_CODE, null, t.getMessage());
+                } else {
+                    responseWrap = new ResponseWrap<>(false, 0, null, t.getMessage());
+                }
+
+                reviewMutableLiveData.postValue(responseWrap);
+            }
+        });
+    }
+
+    @Override
+    public void postRequestForReview(int productId, ReviewRequest reviewRequest, MutableLiveData<ResponseWrap<ReviewResponse>> reviewResponseMutableLiveData) {
+
+        Call<ReviewResponse> messages = serverApi.postReview("d1870a6eb394285f6bd2da8392590119b173b27a", productId, reviewRequest);
+        messages.enqueue(new Callback<ReviewResponse>() {
+            @Override
+            public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {
+                ResponseWrap<ReviewResponse> responseWrap;
+                if (response.isSuccessful()) {
+                    responseWrap = new ResponseWrap<>(response.isSuccessful(), response.code(), response.body());
+                } else {
+                    responseWrap = new ResponseWrap<>(response.isSuccessful(), response.code(), getErrorMessage(response));
+                }
+
+                reviewResponseMutableLiveData.postValue(responseWrap);
+            }
+
+            @Override
+            public void onFailure(Call<ReviewResponse> call, Throwable t) {
+                ResponseWrap<ReviewResponse> responseWrap;
+
+                if (t instanceof SocketTimeoutException) {
+                    responseWrap = new ResponseWrap<>(false, TIMEOUT_CODE, null, t.getMessage());
+                } else {
+                    responseWrap = new ResponseWrap<>(false, 0, null, t.getMessage());
+                }
+
+                reviewResponseMutableLiveData.postValue(responseWrap);
+            }
+        });
+    }
 
 
     private String getErrorMessage(Response<?> response) {
