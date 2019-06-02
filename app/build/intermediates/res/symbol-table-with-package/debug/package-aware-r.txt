@@ -161,6 +161,8 @@ attr iconTintMode
 attr iconifiedByDefault
 attr imageButtonStyle
 attr indeterminateProgressStyle
+attr indicatorColor
+attr indicatorName
 attr initialActivityCount
 attr isLightTheme
 attr itemPadding
@@ -239,7 +241,11 @@ attr listPreferredItemPaddingRight
 attr logo
 attr logoDescription
 attr maxButtonHeight
+attr maxHeight
+attr maxWidth
 attr measureWithLargestChild
+attr minHeight
+attr minWidth
 attr multiChoiceItemLayout
 attr navigationContentDescription
 attr navigationIcon
@@ -384,6 +390,7 @@ color background_material_dark
 color background_material_light
 color black_transparent_2
 color blue
+color blue_light
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -422,6 +429,7 @@ color material_grey_600
 color material_grey_800
 color material_grey_850
 color material_grey_900
+color nero_color
 color notification_action_color_filter
 color notification_icon_bg_color
 color primary_dark_material_dark
@@ -654,6 +662,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable bg_btn_blue_border_rounded
 drawable bg_btn_white_border_rounded
 drawable ic_back_arrow
 drawable ic_back_ripple
@@ -713,6 +722,7 @@ id beginning
 id blocking
 id bottom
 id btnLogin
+id btnReview
 id buttonPanel
 id cardinal
 id center
@@ -739,6 +749,7 @@ id disableHome
 id edit_query
 id end
 id etPassword
+id etReview
 id etUsername
 id expand_activities_button
 id expanded_menu
@@ -963,6 +974,11 @@ string search_menu_title
 string settings
 string status_bar_notification_info_overflow
 string string_forgot_password
+string submit_review
+string type_your_review
+style AVLoadingIndicatorView
+style AVLoadingIndicatorView_Large
+style AVLoadingIndicatorView_Small
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -1311,6 +1327,7 @@ style Widget_AppCompat_Toolbar_Button_Navigation
 style Widget_Compat_NotificationActionContainer
 style Widget_Compat_NotificationActionText
 style Widget_Support_CoordinatorLayout
+styleable AVLoadingIndicatorView indicatorColor indicatorName maxHeight maxWidth minHeight minWidth
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth

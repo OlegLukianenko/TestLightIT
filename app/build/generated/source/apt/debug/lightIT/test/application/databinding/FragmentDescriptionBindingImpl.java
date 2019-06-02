@@ -16,6 +16,10 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         sViewsWithIds = new android.util.SparseIntArray();
         sViewsWithIds.put(R.id.headerBackground, 6);
         sViewsWithIds.put(R.id.headerResizer, 7);
+        sViewsWithIds.put(R.id.loginViewsWrap, 8);
+        sViewsWithIds.put(R.id.etReview, 9);
+        sViewsWithIds.put(R.id.btnReview, 10);
+        sViewsWithIds.put(R.id.progressBar, 11);
     }
     // views
     @NonNull
@@ -28,15 +32,19 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     // Inverse Binding Event Handlers
 
     public FragmentDescriptionBindingImpl(@Nullable android.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 8, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 12, sIncludes, sViewsWithIds));
     }
     private FragmentDescriptionBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 1
             , (android.widget.ImageView) bindings[1]
+            , (android.widget.Button) bindings[10]
             , (android.widget.TextView) bindings[5]
+            , (android.widget.EditText) bindings[9]
             , (android.support.constraint.ConstraintLayout) bindings[6]
             , (android.view.View) bindings[7]
             , (android.widget.ImageView) bindings[3]
+            , (android.support.constraint.ConstraintLayout) bindings[8]
+            , (com.wang.avi.AVLoadingIndicatorView) bindings[11]
             , (android.widget.TextView) bindings[2]
             , (android.widget.TextView) bindings[4]
             );

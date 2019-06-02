@@ -25,6 +25,8 @@
     <string name="hint_password">Password</string>
     <string name="string_forgot_password"><u>Forgot your password?</u></string>
 
+    <string name="type_your_review">Type your review...</string>
+    <string name="submit_review">Submit review</string>
 
     <string name="icon_url">http://smktesting.herokuapp.com/static/</string>
 

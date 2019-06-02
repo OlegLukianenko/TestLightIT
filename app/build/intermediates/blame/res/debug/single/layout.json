@@ -8,10 +8,6 @@
         "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/fragment_description.xml"
     },
     {
-        "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_first.xml",
-        "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/fragment_first.xml"
-    },
-    {
         "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_product.xml",
         "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/fragment_product.xml"
     },
@@ -20,12 +16,12 @@
         "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/layout_snack_bar.xml"
     },
     {
-        "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
-        "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/activity_main.xml"
-    },
-    {
         "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/product_recycler_item.xml",
         "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/product_recycler_item.xml"
+    },
+    {
+        "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/activity_main.xml"
     },
     {
         "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_splash.xml",

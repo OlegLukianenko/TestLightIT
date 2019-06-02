@@ -10,8 +10,11 @@ import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.wang.avi.AVLoadingIndicatorView;
 import lightIT.test.application.app.home.DescriptionFragment;
 import lightIT.test.application.viewmodel.DescriptionFragmentViewModel;
 
@@ -20,7 +23,13 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
   public final ImageView backArrow;
 
   @NonNull
+  public final Button btnReview;
+
+  @NonNull
   public final TextView description;
+
+  @NonNull
+  public final EditText etReview;
 
   @NonNull
   public final ConstraintLayout headerBackground;
@@ -30,6 +39,12 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
 
   @NonNull
   public final ImageView image;
+
+  @NonNull
+  public final ConstraintLayout loginViewsWrap;
+
+  @NonNull
+  public final AVLoadingIndicatorView progressBar;
 
   @NonNull
   public final TextView textPricing;
@@ -44,15 +59,20 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
   protected DescriptionFragment mHandler;
 
   protected FragmentDescriptionBinding(DataBindingComponent _bindingComponent, View _root,
-      int _localFieldCount, ImageView backArrow, TextView description,
-      ConstraintLayout headerBackground, View headerResizer, ImageView image, TextView textPricing,
+      int _localFieldCount, ImageView backArrow, Button btnReview, TextView description,
+      EditText etReview, ConstraintLayout headerBackground, View headerResizer, ImageView image,
+      ConstraintLayout loginViewsWrap, AVLoadingIndicatorView progressBar, TextView textPricing,
       TextView title) {
     super(_bindingComponent, _root, _localFieldCount);
     this.backArrow = backArrow;
+    this.btnReview = btnReview;
     this.description = description;
+    this.etReview = etReview;
     this.headerBackground = headerBackground;
     this.headerResizer = headerResizer;
     this.image = image;
+    this.loginViewsWrap = loginViewsWrap;
+    this.progressBar = progressBar;
     this.textPricing = textPricing;
     this.title = title;
   }
