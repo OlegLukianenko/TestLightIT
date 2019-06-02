@@ -670,6 +670,10 @@ drawable ic_back_arrow
 drawable ic_back_ripple
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_login
+drawable ic_login_ripple
+drawable ic_logout
+drawable ic_logout_ripple
 drawable ic_user_placeholder
 drawable notification_action_background
 drawable notification_bg

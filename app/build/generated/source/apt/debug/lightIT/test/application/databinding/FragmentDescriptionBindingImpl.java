@@ -12,7 +12,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     @Nullable
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
-        sIncludes = new android.databinding.ViewDataBinding.IncludedLayouts(16);
+        sIncludes = new android.databinding.ViewDataBinding.IncludedLayouts(17);
         sIncludes.setIncludes(0, 
             new String[] {"layout_description_progress_bar"},
             new int[] {8},
@@ -20,11 +20,12 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         sViewsWithIds = new android.util.SparseIntArray();
         sViewsWithIds.put(R.id.headerBackground, 9);
         sViewsWithIds.put(R.id.headerResizer, 10);
-        sViewsWithIds.put(R.id.viewsWrap, 11);
-        sViewsWithIds.put(R.id.ratingBar, 12);
-        sViewsWithIds.put(R.id.etReview, 13);
-        sViewsWithIds.put(R.id.ReviewTitle, 14);
-        sViewsWithIds.put(R.id.recycleView, 15);
+        sViewsWithIds.put(R.id.btnLogin, 11);
+        sViewsWithIds.put(R.id.viewsWrap, 12);
+        sViewsWithIds.put(R.id.ratingBar, 13);
+        sViewsWithIds.put(R.id.etReview, 14);
+        sViewsWithIds.put(R.id.ReviewTitle, 15);
+        sViewsWithIds.put(R.id.recycleView, 16);
     }
     // views
     @NonNull
@@ -39,25 +40,26 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     // Inverse Binding Event Handlers
 
     public FragmentDescriptionBindingImpl(@Nullable android.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 16, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 17, sIncludes, sViewsWithIds));
     }
     private FragmentDescriptionBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 3
-            , (android.widget.TextView) bindings[14]
+            , (android.widget.TextView) bindings[15]
             , (android.widget.ImageView) bindings[1]
+            , (android.widget.ImageView) bindings[11]
             , (android.widget.Button) bindings[6]
             , (android.widget.TextView) bindings[5]
-            , (android.widget.EditText) bindings[13]
+            , (android.widget.EditText) bindings[14]
             , (android.support.constraint.ConstraintLayout) bindings[9]
             , (android.view.View) bindings[10]
             , (android.widget.ImageView) bindings[3]
             , (lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding) bindings[8]
             , (com.wang.avi.AVLoadingIndicatorView) bindings[7]
-            , (android.widget.RatingBar) bindings[12]
-            , (android.support.v7.widget.RecyclerView) bindings[15]
+            , (android.widget.RatingBar) bindings[13]
+            , (android.support.v7.widget.RecyclerView) bindings[16]
             , (android.widget.TextView) bindings[2]
             , (android.widget.TextView) bindings[4]
-            , (android.support.constraint.ConstraintLayout) bindings[11]
+            , (android.support.constraint.ConstraintLayout) bindings[12]
             );
         this.backArrow.setTag(null);
         this.btnReview.setTag(null);

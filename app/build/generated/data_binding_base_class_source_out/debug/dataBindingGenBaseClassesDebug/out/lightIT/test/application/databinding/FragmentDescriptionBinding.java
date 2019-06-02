@@ -28,6 +28,9 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
   public final ImageView backArrow;
 
   @NonNull
+  public final ImageView btnLogin;
+
+  @NonNull
   public final Button btnReview;
 
   @NonNull
@@ -76,8 +79,8 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
   protected DescriptionFragment mHandler;
 
   protected FragmentDescriptionBinding(DataBindingComponent _bindingComponent, View _root,
-      int _localFieldCount, TextView ReviewTitle, ImageView backArrow, Button btnReview,
-      TextView description, EditText etReview, ConstraintLayout headerBackground,
+      int _localFieldCount, TextView ReviewTitle, ImageView backArrow, ImageView btnLogin,
+      Button btnReview, TextView description, EditText etReview, ConstraintLayout headerBackground,
       View headerResizer, ImageView image,
       LayoutDescriptionProgressBarBinding includeLayoutProgressBar,
       AVLoadingIndicatorView progressBar, RatingBar ratingBar, RecyclerView recycleView,
@@ -85,6 +88,7 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
     super(_bindingComponent, _root, _localFieldCount);
     this.ReviewTitle = ReviewTitle;
     this.backArrow = backArrow;
+    this.btnLogin = btnLogin;
     this.btnReview = btnReview;
     this.description = description;
     this.etReview = etReview;
