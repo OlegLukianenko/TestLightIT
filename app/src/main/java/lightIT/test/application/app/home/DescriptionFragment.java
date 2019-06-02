@@ -8,6 +8,7 @@ import android.view.View;
 import javax.inject.Inject;
 
 import lightIT.test.application.R;
+import lightIT.test.application.app.home.adapter.ReviewRecyclerAdapter;
 import lightIT.test.application.base.BaseFragment;
 import lightIT.test.application.data.retrofit.response.Product;
 import lightIT.test.application.databinding.FragmentDescriptionBinding;
@@ -24,8 +25,8 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
     @Inject
     protected NetworkHelper networkHelper;
 
-    //@Inject
-    //ProductRecyclerAdapter productRecyclerAdapter;
+    @Inject
+    ReviewRecyclerAdapter reviewRecyclerAdapter;
 
     @Override
     protected int getLayout() {

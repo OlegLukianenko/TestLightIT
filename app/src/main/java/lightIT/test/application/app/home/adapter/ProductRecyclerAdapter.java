@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import javax.inject.Inject;
 
 import lightIT.test.application.R;
+import lightIT.test.application.app.home.adapter.holder.ProductViewHolder;
 import lightIT.test.application.base.BaseRecyclerAdapter;
 import lightIT.test.application.data.retrofit.response.Product;
 import lightIT.test.application.databinding.ProductRecyclerItemBinding;

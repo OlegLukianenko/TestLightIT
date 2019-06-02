@@ -1,4 +1,4 @@
-package lightIT.test.application.app.home.adapter;
+package lightIT.test.application.app.home.adapter.holder;
 
 import lightIT.test.application.base.BaseViewHolder;
 import lightIT.test.application.data.retrofit.response.Product;
