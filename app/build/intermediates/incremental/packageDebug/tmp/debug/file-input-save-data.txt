@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Jun 02 17:28:12 EEST 2019
+#Sun Jun 02 20:42:11 EEST 2019
 1.base=/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/transforms/dexMerger/debug/0
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY

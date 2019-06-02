@@ -4,31 +4,41 @@ package lightIT.test.application.viewmodel;
 import dagger.internal.Factory;
 import javax.inject.Provider;
 import lightIT.test.application.data.repository.RepositoryApi;
+import lightIT.test.application.utils.NetworkHelper;
 
 public final class DescriptionFragmentViewModel_Factory
     implements Factory<DescriptionFragmentViewModel> {
   private final Provider<RepositoryApi> repositoryApiProvider;
 
-  public DescriptionFragmentViewModel_Factory(Provider<RepositoryApi> repositoryApiProvider) {
+  private final Provider<NetworkHelper> networkHelperProvider;
+
+  public DescriptionFragmentViewModel_Factory(
+      Provider<RepositoryApi> repositoryApiProvider,
+      Provider<NetworkHelper> networkHelperProvider) {
     this.repositoryApiProvider = repositoryApiProvider;
+    this.networkHelperProvider = networkHelperProvider;
   }
 
   @Override
   public DescriptionFragmentViewModel get() {
-    return provideInstance(repositoryApiProvider);
+    return provideInstance(repositoryApiProvider, networkHelperProvider);
   }
 
   public static DescriptionFragmentViewModel provideInstance(
-      Provider<RepositoryApi> repositoryApiProvider) {
+      Provider<RepositoryApi> repositoryApiProvider,
+      Provider<NetworkHelper> networkHelperProvider) {
     DescriptionFragmentViewModel instance = new DescriptionFragmentViewModel();
     DescriptionFragmentViewModel_MembersInjector.injectRepositoryApi(
         instance, repositoryApiProvider.get());
+    DescriptionFragmentViewModel_MembersInjector.injectNetworkHelper(
+        instance, networkHelperProvider.get());
     return instance;
   }
 
   public static DescriptionFragmentViewModel_Factory create(
-      Provider<RepositoryApi> repositoryApiProvider) {
-    return new DescriptionFragmentViewModel_Factory(repositoryApiProvider);
+      Provider<RepositoryApi> repositoryApiProvider,
+      Provider<NetworkHelper> networkHelperProvider) {
+    return new DescriptionFragmentViewModel_Factory(repositoryApiProvider, networkHelperProvider);
   }
 
   public static DescriptionFragmentViewModel newDescriptionFragmentViewModel() {

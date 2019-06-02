@@ -70,6 +70,9 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
   protected DescriptionFragmentViewModel mViewModel;
 
   @Bindable
+  protected View mView;
+
+  @Bindable
   protected DescriptionFragment mHandler;
 
   protected FragmentDescriptionBinding(DataBindingComponent _bindingComponent, View _root,
@@ -103,6 +106,13 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
   @Nullable
   public DescriptionFragmentViewModel getViewModel() {
     return mViewModel;
+  }
+
+  public abstract void setView(@Nullable View view);
+
+  @Nullable
+  public View getView() {
+    return mView;
   }
 
   public abstract void setHandler(@Nullable DescriptionFragment handler);

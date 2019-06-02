@@ -70,8 +70,6 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
 
     private void startMainActivity() {
         viewModel.getProgressBarEvent().postValue(false);
-        //showFragment(new LoginFragment());
-
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
         finish();
@@ -100,6 +98,11 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
         registerReceiver(internetConnectionReceiver, networkHelper.getIntentFilter());
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(internetConnectionReceiver);
+    }
 
     private void showSnackBar() {
         if (networkHelper.isNetworkAvailable()) {

@@ -33,6 +33,7 @@ import lightIT.test.application.data.retrofit.APIError;
 import lightIT.test.application.data.retrofit.ServerApi;
 import lightIT.test.application.di.home.description.DescriptionFragmentComponent;
 import lightIT.test.application.di.home.description.DescriptionFragmentModule;
+import lightIT.test.application.di.home.description.DescriptionFragmentModule_ProvideReviewAdapterFactory;
 import lightIT.test.application.di.home.description.DescriptionFragmentModule_ProvideViewModelFactory;
 import lightIT.test.application.di.home.login.LoginFragmentComponent;
 import lightIT.test.application.di.home.login.LoginFragmentModule;
@@ -471,6 +472,10 @@ public final class DaggerAppComponent implements AppComponent {
             instance, getDescriptionFragmentViewModel());
         DescriptionFragment_MembersInjector.injectNetworkHelper(
             instance, DaggerAppComponent.this.provideNetworkHelperProvider.get());
+        DescriptionFragment_MembersInjector.injectReviewRecyclerAdapter(
+            instance,
+            DescriptionFragmentModule_ProvideReviewAdapterFactory.proxyProvideReviewAdapter(
+                descriptionFragmentModule));
         return instance;
       }
     }
@@ -593,6 +598,8 @@ public final class DaggerAppComponent implements AppComponent {
         DescriptionFragmentViewModel instance) {
       DescriptionFragmentViewModel_MembersInjector.injectRepositoryApi(
           instance, DaggerAppComponent.this.provideServerApiProvider.get());
+      DescriptionFragmentViewModel_MembersInjector.injectNetworkHelper(
+          instance, DaggerAppComponent.this.provideNetworkHelperProvider.get());
       return instance;
     }
   }

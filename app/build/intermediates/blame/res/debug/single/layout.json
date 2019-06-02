@@ -8,6 +8,10 @@
         "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/fragment_description.xml"
     },
     {
+        "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/review_recycler_item.xml",
+        "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/review_recycler_item.xml"
+    },
+    {
         "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_product.xml",
         "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/fragment_product.xml"
     },

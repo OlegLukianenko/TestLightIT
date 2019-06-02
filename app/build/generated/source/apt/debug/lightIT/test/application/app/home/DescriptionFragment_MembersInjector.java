@@ -3,6 +3,7 @@ package lightIT.test.application.app.home;
 
 import dagger.MembersInjector;
 import javax.inject.Provider;
+import lightIT.test.application.app.home.adapter.ReviewRecyclerAdapter;
 import lightIT.test.application.utils.NetworkHelper;
 import lightIT.test.application.viewmodel.DescriptionFragmentViewModel;
 
@@ -12,23 +13,30 @@ public final class DescriptionFragment_MembersInjector
 
   private final Provider<NetworkHelper> networkHelperProvider;
 
+  private final Provider<ReviewRecyclerAdapter> reviewRecyclerAdapterProvider;
+
   public DescriptionFragment_MembersInjector(
       Provider<DescriptionFragmentViewModel> viewModelProvider,
-      Provider<NetworkHelper> networkHelperProvider) {
+      Provider<NetworkHelper> networkHelperProvider,
+      Provider<ReviewRecyclerAdapter> reviewRecyclerAdapterProvider) {
     this.viewModelProvider = viewModelProvider;
     this.networkHelperProvider = networkHelperProvider;
+    this.reviewRecyclerAdapterProvider = reviewRecyclerAdapterProvider;
   }
 
   public static MembersInjector<DescriptionFragment> create(
       Provider<DescriptionFragmentViewModel> viewModelProvider,
-      Provider<NetworkHelper> networkHelperProvider) {
-    return new DescriptionFragment_MembersInjector(viewModelProvider, networkHelperProvider);
+      Provider<NetworkHelper> networkHelperProvider,
+      Provider<ReviewRecyclerAdapter> reviewRecyclerAdapterProvider) {
+    return new DescriptionFragment_MembersInjector(
+        viewModelProvider, networkHelperProvider, reviewRecyclerAdapterProvider);
   }
 
   @Override
   public void injectMembers(DescriptionFragment instance) {
     injectViewModel(instance, viewModelProvider.get());
     injectNetworkHelper(instance, networkHelperProvider.get());
+    injectReviewRecyclerAdapter(instance, reviewRecyclerAdapterProvider.get());
   }
 
   public static void injectViewModel(
@@ -39,5 +47,10 @@ public final class DescriptionFragment_MembersInjector
   public static void injectNetworkHelper(
       DescriptionFragment instance, NetworkHelper networkHelper) {
     instance.networkHelper = networkHelper;
+  }
+
+  public static void injectReviewRecyclerAdapter(
+      DescriptionFragment instance, ReviewRecyclerAdapter reviewRecyclerAdapter) {
+    instance.reviewRecyclerAdapter = reviewRecyclerAdapter;
   }
 }

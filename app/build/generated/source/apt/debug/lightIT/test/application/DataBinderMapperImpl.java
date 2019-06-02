@@ -24,6 +24,7 @@ import lightIT.test.application.databinding.LayoutDescriptionProgressBarBindingI
 import lightIT.test.application.databinding.LayoutProdustProgressBarBindingImpl;
 import lightIT.test.application.databinding.LayoutSnackBarBindingImpl;
 import lightIT.test.application.databinding.ProductRecyclerItemBindingImpl;
+import lightIT.test.application.databinding.ReviewRecyclerItemBindingImpl;
 
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_ACTIVITYMAIN = 1;
@@ -44,7 +45,9 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_PRODUCTRECYCLERITEM = 9;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(9);
+  private static final int LAYOUT_REVIEWRECYCLERITEM = 10;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(10);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
@@ -56,6 +59,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.layout_produst_progress_bar, LAYOUT_LAYOUTPRODUSTPROGRESSBAR);
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.layout_snack_bar, LAYOUT_LAYOUTSNACKBAR);
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.product_recycler_item, LAYOUT_PRODUCTRECYCLERITEM);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.review_recycler_item, LAYOUT_REVIEWRECYCLERITEM);
   }
 
   @Override
@@ -121,6 +125,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for product_recycler_item is invalid. Received: " + tag);
         }
+        case  LAYOUT_REVIEWRECYCLERITEM: {
+          if ("layout/review_recycler_item_0".equals(tag)) {
+            return new ReviewRecyclerItemBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for review_recycler_item is invalid. Received: " + tag);
+        }
       }
     }
     return null;
@@ -179,7 +189,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(9);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(10);
 
     static {
       sKeys.put("layout/activity_main_0", lightIT.test.application.R.layout.activity_main);
@@ -191,6 +201,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/layout_produst_progress_bar_0", lightIT.test.application.R.layout.layout_produst_progress_bar);
       sKeys.put("layout/layout_snack_bar_0", lightIT.test.application.R.layout.layout_snack_bar);
       sKeys.put("layout/product_recycler_item_0", lightIT.test.application.R.layout.product_recycler_item);
+      sKeys.put("layout/review_recycler_item_0", lightIT.test.application.R.layout.review_recycler_item);
     }
   }
 }
