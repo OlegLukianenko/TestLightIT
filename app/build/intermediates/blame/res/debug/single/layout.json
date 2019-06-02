@@ -30,5 +30,9 @@
     {
         "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/layout_produst_progress_bar.xml",
         "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/layout_produst_progress_bar.xml"
+    },
+    {
+        "merged": "/home/oleh/AndroidStudioProjects/TestLightIT/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/layout_description_progress_bar.xml",
+        "source": "/home/oleh/AndroidStudioProjects/TestLightIT/app/src/main/res/layout/layout_description_progress_bar.xml"
     }
 ]

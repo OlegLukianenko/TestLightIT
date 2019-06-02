@@ -12,14 +12,21 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     @Nullable
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
-        sIncludes = null;
+        sIncludes = new android.databinding.ViewDataBinding.IncludedLayouts(16);
+        sIncludes.setIncludes(0, 
+            new String[] {"layout_description_progress_bar"},
+            new int[] {6},
+            new int[] {R.layout.layout_description_progress_bar});
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.headerBackground, 6);
-        sViewsWithIds.put(R.id.headerResizer, 7);
-        sViewsWithIds.put(R.id.loginViewsWrap, 8);
-        sViewsWithIds.put(R.id.etReview, 9);
-        sViewsWithIds.put(R.id.btnReview, 10);
-        sViewsWithIds.put(R.id.progressBar, 11);
+        sViewsWithIds.put(R.id.headerBackground, 7);
+        sViewsWithIds.put(R.id.headerResizer, 8);
+        sViewsWithIds.put(R.id.viewsWrap, 9);
+        sViewsWithIds.put(R.id.ratingBar, 10);
+        sViewsWithIds.put(R.id.etReview, 11);
+        sViewsWithIds.put(R.id.btnReview, 12);
+        sViewsWithIds.put(R.id.progressBar, 13);
+        sViewsWithIds.put(R.id.ReviewTitle, 14);
+        sViewsWithIds.put(R.id.recycleView, 15);
     }
     // views
     @NonNull
@@ -32,21 +39,25 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     // Inverse Binding Event Handlers
 
     public FragmentDescriptionBindingImpl(@Nullable android.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 12, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 16, sIncludes, sViewsWithIds));
     }
     private FragmentDescriptionBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
-        super(bindingComponent, root, 1
+        super(bindingComponent, root, 2
+            , (android.widget.TextView) bindings[14]
             , (android.widget.ImageView) bindings[1]
-            , (android.widget.Button) bindings[10]
+            , (android.widget.Button) bindings[12]
             , (android.widget.TextView) bindings[5]
-            , (android.widget.EditText) bindings[9]
-            , (android.support.constraint.ConstraintLayout) bindings[6]
-            , (android.view.View) bindings[7]
+            , (android.widget.EditText) bindings[11]
+            , (android.support.constraint.ConstraintLayout) bindings[7]
+            , (android.view.View) bindings[8]
             , (android.widget.ImageView) bindings[3]
-            , (android.support.constraint.ConstraintLayout) bindings[8]
-            , (com.wang.avi.AVLoadingIndicatorView) bindings[11]
+            , (lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding) bindings[6]
+            , (com.wang.avi.AVLoadingIndicatorView) bindings[13]
+            , (android.widget.RatingBar) bindings[10]
+            , (android.support.v7.widget.RecyclerView) bindings[15]
             , (android.widget.TextView) bindings[2]
             , (android.widget.TextView) bindings[4]
+            , (android.support.constraint.ConstraintLayout) bindings[9]
             );
         this.backArrow.setTag(null);
         this.description.setTag(null);
@@ -64,8 +75,9 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x8L;
+                mDirtyFlags = 0x10L;
         }
+        includeLayoutProgressBar.invalidateAll();
         requestRebind();
     }
 
@@ -75,6 +87,9 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
             if (mDirtyFlags != 0) {
                 return true;
             }
+        }
+        if (includeLayoutProgressBar.hasPendingBindings()) {
+            return true;
         }
         return false;
     }
@@ -97,7 +112,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     public void setHandler(@Nullable lightIT.test.application.app.home.DescriptionFragment Handler) {
         this.mHandler = Handler;
         synchronized(this) {
-            mDirtyFlags |= 0x2L;
+            mDirtyFlags |= 0x4L;
         }
         notifyPropertyChanged(BR.handler);
         super.requestRebind();
@@ -105,24 +120,41 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     public void setViewModel(@Nullable lightIT.test.application.viewmodel.DescriptionFragmentViewModel ViewModel) {
         this.mViewModel = ViewModel;
         synchronized(this) {
-            mDirtyFlags |= 0x4L;
+            mDirtyFlags |= 0x8L;
         }
         notifyPropertyChanged(BR.viewModel);
         super.requestRebind();
     }
 
     @Override
+    public void setLifecycleOwner(@Nullable android.arch.lifecycle.LifecycleOwner lifecycleOwner) {
+        super.setLifecycleOwner(lifecycleOwner);
+        includeLayoutProgressBar.setLifecycleOwner(lifecycleOwner);
+    }
+
+    @Override
     protected boolean onFieldChange(int localFieldId, Object object, int fieldId) {
         switch (localFieldId) {
             case 0 :
+                return onChangeIncludeLayoutProgressBar((lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding) object, fieldId);
+            case 1 :
                 return onChangeViewModelGetDescriptionFromApi((android.arch.lifecycle.MutableLiveData<lightIT.test.application.data.retrofit.response.Product>) object, fieldId);
+        }
+        return false;
+    }
+    private boolean onChangeIncludeLayoutProgressBar(lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding IncludeLayoutProgressBar, int fieldId) {
+        if (fieldId == BR._all) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x1L;
+            }
+            return true;
         }
         return false;
     }
     private boolean onChangeViewModelGetDescriptionFromApi(android.arch.lifecycle.MutableLiveData<lightIT.test.application.data.retrofit.response.Product> ViewModelGetDescriptionFromApi, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
-                    mDirtyFlags |= 0x1L;
+                    mDirtyFlags |= 0x2L;
             }
             return true;
         }
@@ -145,7 +177,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         android.arch.lifecycle.MutableLiveData<lightIT.test.application.data.retrofit.response.Product> viewModelGetDescriptionFromApi = null;
         lightIT.test.application.viewmodel.DescriptionFragmentViewModel viewModel = mViewModel;
 
-        if ((dirtyFlags & 0xdL) != 0) {
+        if ((dirtyFlags & 0x1aL) != 0) {
 
 
 
@@ -153,7 +185,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
                     // read viewModel.getDescriptionFromApi()
                     viewModelGetDescriptionFromApi = viewModel.getDescriptionFromApi();
                 }
-                updateLiveDataRegistration(0, viewModelGetDescriptionFromApi);
+                updateLiveDataRegistration(1, viewModelGetDescriptionFromApi);
 
 
                 if (viewModelGetDescriptionFromApi != null) {
@@ -176,12 +208,12 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
                 imageAndroidStringIconUrlViewModelGetDescriptionFromApiImg = (image.getResources().getString(R.string.icon_url)) + (viewModelGetDescriptionFromApiImg);
         }
         // batch finished
-        if ((dirtyFlags & 0x8L) != 0) {
+        if ((dirtyFlags & 0x10L) != 0) {
             // api target 1
 
             this.backArrow.setOnClickListener(mCallback1);
         }
-        if ((dirtyFlags & 0xdL) != 0) {
+        if ((dirtyFlags & 0x1aL) != 0) {
             // api target 1
 
             android.databinding.adapters.TextViewBindingAdapter.setText(this.description, viewModelGetDescriptionFromApiText);
@@ -189,6 +221,12 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
             android.databinding.adapters.TextViewBindingAdapter.setText(this.textPricing, viewModelGetDescriptionFromApiTitle);
             android.databinding.adapters.TextViewBindingAdapter.setText(this.title, viewModelGetDescriptionFromApiTitle);
         }
+        if ((dirtyFlags & 0x18L) != 0) {
+            // api target 1
+
+            this.includeLayoutProgressBar.setViewModel(viewModel);
+        }
+        executeBindingsOn(includeLayoutProgressBar);
     }
     // Listener Stub Implementations
     // callback impls
@@ -211,10 +249,11 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
-        flag 0 (0x1L): viewModel.getDescriptionFromApi()
-        flag 1 (0x2L): handler
-        flag 2 (0x3L): viewModel
-        flag 3 (0x4L): null
+        flag 0 (0x1L): includeLayoutProgressBar
+        flag 1 (0x2L): viewModel.getDescriptionFromApi()
+        flag 2 (0x3L): handler
+        flag 3 (0x4L): viewModel
+        flag 4 (0x5L): null
     flag mapping end*/
     //end
 }

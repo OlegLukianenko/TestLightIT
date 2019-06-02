@@ -29,7 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="lightIT.test.application.app.home.MainActivity" />
+        <activity
+            android:name="lightIT.test.application.app.home.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
 
         <provider
             android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"

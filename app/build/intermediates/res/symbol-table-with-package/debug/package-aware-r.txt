@@ -402,6 +402,8 @@ color button_material_light
 color colorAccent
 color colorPrimary
 color colorPrimaryDark
+color color_control_activated
+color color_control_normal
 color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
@@ -689,6 +691,7 @@ id ALT
 id CTRL
 id FUNCTION
 id META
+id ReviewTitle
 id SHIFT
 id SYM
 id action_bar
@@ -802,6 +805,7 @@ id progressBarWrap
 id progress_circular
 id progress_horizontal
 id radio
+id ratingBar
 id recycleView
 id right
 id right_icon
@@ -858,6 +862,7 @@ id uniform
 id up
 id useLogo
 id vInscription
+id viewsWrap
 id withText
 id wrap
 id wrap_content
@@ -899,6 +904,7 @@ layout activity_splash
 layout fragment_description
 layout fragment_login
 layout fragment_product
+layout layout_description_progress_bar
 layout layout_produst_progress_bar
 layout layout_snack_bar
 layout notification_action
@@ -970,6 +976,7 @@ string oops
 string poor_internet_connection
 string requires_permission
 string restore
+string review
 string search_menu_title
 string settings
 string status_bar_notification_info_overflow

@@ -7,18 +7,23 @@ import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import com.wang.avi.AVLoadingIndicatorView;
 import lightIT.test.application.app.home.DescriptionFragment;
 import lightIT.test.application.viewmodel.DescriptionFragmentViewModel;
 
 public abstract class FragmentDescriptionBinding extends ViewDataBinding {
+  @NonNull
+  public final TextView ReviewTitle;
+
   @NonNull
   public final ImageView backArrow;
 
@@ -41,16 +46,25 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
   public final ImageView image;
 
   @NonNull
-  public final ConstraintLayout loginViewsWrap;
+  public final LayoutDescriptionProgressBarBinding includeLayoutProgressBar;
 
   @NonNull
   public final AVLoadingIndicatorView progressBar;
+
+  @NonNull
+  public final RatingBar ratingBar;
+
+  @NonNull
+  public final RecyclerView recycleView;
 
   @NonNull
   public final TextView textPricing;
 
   @NonNull
   public final TextView title;
+
+  @NonNull
+  public final ConstraintLayout viewsWrap;
 
   @Bindable
   protected DescriptionFragmentViewModel mViewModel;
@@ -59,11 +73,14 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
   protected DescriptionFragment mHandler;
 
   protected FragmentDescriptionBinding(DataBindingComponent _bindingComponent, View _root,
-      int _localFieldCount, ImageView backArrow, Button btnReview, TextView description,
-      EditText etReview, ConstraintLayout headerBackground, View headerResizer, ImageView image,
-      ConstraintLayout loginViewsWrap, AVLoadingIndicatorView progressBar, TextView textPricing,
-      TextView title) {
+      int _localFieldCount, TextView ReviewTitle, ImageView backArrow, Button btnReview,
+      TextView description, EditText etReview, ConstraintLayout headerBackground,
+      View headerResizer, ImageView image,
+      LayoutDescriptionProgressBarBinding includeLayoutProgressBar,
+      AVLoadingIndicatorView progressBar, RatingBar ratingBar, RecyclerView recycleView,
+      TextView textPricing, TextView title, ConstraintLayout viewsWrap) {
     super(_bindingComponent, _root, _localFieldCount);
+    this.ReviewTitle = ReviewTitle;
     this.backArrow = backArrow;
     this.btnReview = btnReview;
     this.description = description;
@@ -71,10 +88,14 @@ public abstract class FragmentDescriptionBinding extends ViewDataBinding {
     this.headerBackground = headerBackground;
     this.headerResizer = headerResizer;
     this.image = image;
-    this.loginViewsWrap = loginViewsWrap;
+    this.includeLayoutProgressBar = includeLayoutProgressBar;
+    setContainedBinding(this.includeLayoutProgressBar);;
     this.progressBar = progressBar;
+    this.ratingBar = ratingBar;
+    this.recycleView = recycleView;
     this.textPricing = textPricing;
     this.title = title;
+    this.viewsWrap = viewsWrap;
   }
 
   public abstract void setViewModel(@Nullable DescriptionFragmentViewModel viewModel);

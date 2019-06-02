@@ -22,5 +22,7 @@
 
     <color name="grey1">#A1A1A1</color>
     <color name="blue_light">#5bc0de</color>
-    #5bc0de
+
+    <color name="color_control_normal">#fbcc18</color>
+    <color name="color_control_activated">#e7a242</color>
 </resources>

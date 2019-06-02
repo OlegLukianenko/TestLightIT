@@ -12,7 +12,6 @@
                  
                           
                                                                            
-
            
 
     <android.support.constraint.ConstraintLayout
@@ -72,7 +71,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
         </android.support.constraint.ConstraintLayout>
 
         <ImageView
@@ -86,7 +84,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/headerBackground"
             app:layout_constraintWidth_percent="0.5" />
-
 
         <TextView
             android:id="@+id/title"
@@ -119,22 +116,37 @@
 
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/loginViewsWrap"
+            android:id="@+id/viewsWrap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/description">
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:progressBackgroundTint="@color/color_control_normal"
+                android:progressTint="@color/color_control_normal"
+                android:rating="0"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                android:stepSize="1"
+                android:transformPivotX="0dp"
+                android:transformPivotY="35dp"
+                app:layout_constraintStart_toStartOf="@+id/etReview"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/etReview"
                 style="@style/LoginField"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
                 android:hint="@string/type_your_review"
                 app:layout_constraintDimensionRatio="26:4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
                 app:layout_constraintWidth_percent="0.8" />
 
             <Button
@@ -144,12 +156,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/bg_btn_blue_border_rounded"
+                android:text="@string/submit_review"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                android:text="@string/submit_review"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="26:6.5"
+                app:layout_constraintDimensionRatio="26:8"
                 app:layout_constraintStart_toStartOf="@+id/etReview"
                 app:layout_constraintTop_toBottomOf="@+id/etReview"
                 app:layout_constraintWidth_percent="0.3" />
@@ -167,26 +179,39 @@
 
         </android.support.constraint.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/ReviewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/text_color"
+            android:text="@string/review"
+            android:textSize="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewsWrap" />
 
-        <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/recycleView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:overScrollMode="never"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/headerBackground" />-->
 
-        <!--<include-->
-        <!--android:id="@+id/includeLayoutProgressBar"-->
-        <!--layout="@layout/layout_produst_progress_bar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:elevation="9dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:viewModel="@{viewModel}"-->
-        <!--tools:visibility="gone" />-->
+
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ReviewTitle" />
+
+        <include
+        android:id="@+id/includeLayoutProgressBar"
+        layout="@layout/layout_description_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:elevation="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+                                    
+        tools:visibility="gone" />
 
     </android.support.constraint.ConstraintLayout>
          
