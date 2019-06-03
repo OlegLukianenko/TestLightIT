@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                       
+                                                  
+                                      
+
+    
+
+                 
+                            
+                                                                               
+
+                 
+                       
+                                       
+
+           
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_background" android:tag="layout/fragment_login_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" tools:ignore="contentDescription">
+
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.411"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.323"
+            app:layout_constraintWidth_percent="0.75" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/loginViewsWrap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/etUsername"
+                style="@style/LoginField"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/hint_username"
+                android:inputType="textWebEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etPassword"
+                app:layout_constraintDimensionRatio="26:3.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.8" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                style="@style/LoginField"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="24dp"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_h_1"
+                app:layout_constraintDimensionRatio="26:3.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.8" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_btn_blue_border_rounded"
+                android:tag="binding_1"                                                                                
+                                                                          
+                                                                                                                                          
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintDimensionRatio="26:3.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_h_1"
+                app:layout_constraintWidth_percent="0.8" />
+
+            <TextView
+                android:id="@+id/signUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/dont_have_an_account"
+                android:textColor="@drawable/text_btn_selector"
+                android:textSize="16sp"
+                android:clickable="true"
+                android:tag="binding_2"                      
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/progressBar"
+                style="@style/AVLoadingIndicatorView.Small"
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:elevation="3dp"
+                android:tag="binding_3"                                                               
+                app:indicatorName="BallPulseIndicator"
+                app:layout_constraintBottom_toBottomOf="@+id/btnLogin"
+                app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+                app:layout_constraintStart_toStartOf="@+id/btnLogin"
+                app:layout_constraintTop_toTopOf="@+id/btnLogin" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_h_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.78" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+         

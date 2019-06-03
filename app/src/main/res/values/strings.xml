@@ -41,4 +41,8 @@
     <string name="empty_login_fields_string">Fields are empty</string>
     <string name="invalid_email_address">Your e-mail address is invalid.</string>
     <string name="token">user_token</string>
+    <string name="not_found">User not found</string>
+    <string name="dont_have_an_account">Don\'t have an account? Sign Up</string>
+    <string name="sign_up">Sign Up</string>
+
 </resources>

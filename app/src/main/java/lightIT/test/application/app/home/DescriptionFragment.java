@@ -103,6 +103,9 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
         viewModel.observeInternetConnectionError().observe(this, mVoid ->
                 showToast(getString(R.string.check_internet_connection_string), Toast.LENGTH_SHORT));
 
+
+        viewModel.observeAuthorizationEvent().observe(this, mVoid ->
+                ((MainActivity) getActivity()).showFragment(new LoginFragment()));
     }
 
     public void clickBackButton() {

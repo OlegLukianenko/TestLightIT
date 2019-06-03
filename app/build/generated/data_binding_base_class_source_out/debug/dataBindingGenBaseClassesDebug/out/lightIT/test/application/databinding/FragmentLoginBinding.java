@@ -14,14 +14,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.wang.avi.AVLoadingIndicatorView;
 import lightIT.test.application.viewmodel.LoginFragmentViewModel;
 
 public abstract class FragmentLoginBinding extends ViewDataBinding {
   @NonNull
-  public final Button btnLogin;
+  public final TextView appName;
 
   @NonNull
-  public final ConstraintLayout cardinal;
+  public final Button btnLogin;
 
   @NonNull
   public final EditText etPassword;
@@ -30,16 +31,16 @@ public abstract class FragmentLoginBinding extends ViewDataBinding {
   public final EditText etUsername;
 
   @NonNull
-  public final TextView forgotPassword;
-
-  @NonNull
   public final Guideline guidelineH1;
 
   @NonNull
   public final ConstraintLayout loginViewsWrap;
 
   @NonNull
-  public final View vInscription;
+  public final AVLoadingIndicatorView progressBar;
+
+  @NonNull
+  public final TextView signUp;
 
   @Bindable
   protected LoginFragmentViewModel mViewModel;
@@ -48,18 +49,18 @@ public abstract class FragmentLoginBinding extends ViewDataBinding {
   protected View mView;
 
   protected FragmentLoginBinding(DataBindingComponent _bindingComponent, View _root,
-      int _localFieldCount, Button btnLogin, ConstraintLayout cardinal, EditText etPassword,
-      EditText etUsername, TextView forgotPassword, Guideline guidelineH1,
-      ConstraintLayout loginViewsWrap, View vInscription) {
+      int _localFieldCount, TextView appName, Button btnLogin, EditText etPassword,
+      EditText etUsername, Guideline guidelineH1, ConstraintLayout loginViewsWrap,
+      AVLoadingIndicatorView progressBar, TextView signUp) {
     super(_bindingComponent, _root, _localFieldCount);
+    this.appName = appName;
     this.btnLogin = btnLogin;
-    this.cardinal = cardinal;
     this.etPassword = etPassword;
     this.etUsername = etUsername;
-    this.forgotPassword = forgotPassword;
     this.guidelineH1 = guidelineH1;
     this.loginViewsWrap = loginViewsWrap;
-    this.vInscription = vInscription;
+    this.progressBar = progressBar;
+    this.signUp = signUp;
   }
 
   public abstract void setViewModel(@Nullable LoginFragmentViewModel viewModel);

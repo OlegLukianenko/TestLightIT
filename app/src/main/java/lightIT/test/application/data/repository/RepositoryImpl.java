@@ -106,7 +106,7 @@ public class RepositoryImpl implements RepositoryApi {
     @Override
     public void postRequestForReview(int productId, ReviewRequest reviewRequest, MutableLiveData<ResponseWrap<ReviewResponse>> reviewResponseMutableLiveData) {
 
-        Call<ReviewResponse> messages = serverApi.postReview("6352d8c3cea5fe1034840f4e710538b48daac598", productId, reviewRequest);
+        Call<ReviewResponse> messages = serverApi.postReview("Token e0a56837819155f54ec09088a2d8d1b80a0759b4", productId, reviewRequest);
         messages.enqueue(new Callback<ReviewResponse>() {
             @Override
             public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {
@@ -139,7 +139,33 @@ public class RepositoryImpl implements RepositoryApi {
 
     @Override
     public void sendLoginRequest(LoginRequest loginRequest, MutableLiveData<ResponseWrap<LoginResponse>> loginResponseMutableLiveData) {
+        serverApi.sendLoginRequest(loginRequest).enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                ResponseWrap<LoginResponse> responseWrap;
 
+                if (response.isSuccessful()) {
+                    responseWrap = new ResponseWrap<>(response.isSuccessful(), response.code(), response.body());
+                } else {
+                    responseWrap = new ResponseWrap<>(response.isSuccessful(), response.code(), getErrorMessage(response));
+                }
+
+                loginResponseMutableLiveData.postValue(responseWrap);
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                ResponseWrap<LoginResponse> responseWrap;
+
+                if (t instanceof SocketTimeoutException) {
+                    responseWrap = new ResponseWrap<>(false, TIMEOUT_CODE, null, t.getMessage());
+                } else {
+                    responseWrap = new ResponseWrap<>(false, 0, null, t.getMessage());
+                }
+
+                loginResponseMutableLiveData.postValue(responseWrap);
+            }
+        });
     }
 
 

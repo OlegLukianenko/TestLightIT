@@ -591,6 +591,8 @@ public final class DaggerAppComponent implements AppComponent {
     private LoginFragmentViewModel injectLoginFragmentViewModel(LoginFragmentViewModel instance) {
       LoginFragmentViewModel_MembersInjector.injectRepositoryApi(
           instance, DaggerAppComponent.this.provideServerApiProvider.get());
+      LoginFragmentViewModel_MembersInjector.injectNetworkHelper(
+          instance, DaggerAppComponent.this.provideNetworkHelperProvider.get());
       return instance;
     }
 

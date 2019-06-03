@@ -2,7 +2,9 @@ package lightIT.test.application.data.retrofit;
 
 import java.util.List;
 
+import lightIT.test.application.data.retrofit.request.LoginRequest;
 import lightIT.test.application.data.retrofit.request.ReviewRequest;
+import lightIT.test.application.data.retrofit.response.LoginResponse;
 import lightIT.test.application.data.retrofit.response.Product;
 import lightIT.test.application.data.retrofit.response.Review;
 import lightIT.test.application.data.retrofit.response.ReviewResponse;
@@ -22,6 +24,9 @@ public interface ServerApi {
     Call<List<Review>> getReviewList(@Path("productId") int productId);
 
     @POST("/api/reviews/{productId}")
-    Call<ReviewResponse> postReview(@Header("Authorization: Token ") String token, @Path("productId") int productId, @Body ReviewRequest reviewRequest);
+    Call<ReviewResponse> postReview(@Header("Authorization") String token, @Path("productId") int productId, @Body ReviewRequest reviewRequest);
+
+    @POST("/api/login/")
+    Call<LoginResponse> sendLoginRequest(@Body LoginRequest loginRequest);
 
 }

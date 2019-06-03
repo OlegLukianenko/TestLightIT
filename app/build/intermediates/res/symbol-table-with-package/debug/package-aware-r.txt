@@ -765,7 +765,6 @@ id fill
 id fill_horizontal
 id fill_vertical
 id forever
-id forgotPassword
 id gone
 id group_divider
 id groups
@@ -838,6 +837,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signUp
 id spacer
 id split_action_bar
 id spread
@@ -872,7 +872,6 @@ id uniform
 id up
 id useLogo
 id username
-id vInscription
 id viewsWrap
 id withText
 id wrap
@@ -977,7 +976,11 @@ string change_user
 string check_internet_connection_string
 string comment
 string connection
+string dont_have_an_account
+string empty_login_field_string
 string empty_login_fields_string
+string empty_password_string
+string empty_username_string
 string enable_permission
 string hint_password
 string hint_username
@@ -985,7 +988,9 @@ string icon_url
 string internet_connected
 string internet_connection
 string internet_not_available
+string invalid_email_address
 string no_connection
+string not_found
 string ok
 string oops
 string poor_internet_connection
@@ -995,9 +1000,11 @@ string restore
 string review
 string search_menu_title
 string settings
+string sign_up
 string status_bar_notification_info_overflow
 string string_forgot_password
 string submit_review
+string token
 string type_your_review
 style AVLoadingIndicatorView
 style AVLoadingIndicatorView_Large

@@ -39,6 +39,9 @@ public class DescriptionFragmentViewModel extends ViewModel {
     private SingleLiveEvent<Void> emptyFieldsError = new SingleLiveEvent<>();
     private SingleLiveEvent<Void> internetConnectionError = new SingleLiveEvent<>();
 
+    private SingleLiveEvent<Void> authorizationEvent = new SingleLiveEvent<>();
+
+
     public void sendReviewRequest(int productId) {
         repositoryApi.getReviewListFromApi(productId, reviewtListMutableLiveData);
     }
@@ -74,6 +77,10 @@ public class DescriptionFragmentViewModel extends ViewModel {
         return internetConnectionError;
     }
 
+    public SingleLiveEvent<Void> observeAuthorizationEvent() {
+        return authorizationEvent;
+    }
+
     public void postRequestForReview(String text, int rate, int productId) {
 
         if (text.isEmpty()) {
@@ -88,6 +95,11 @@ public class DescriptionFragmentViewModel extends ViewModel {
             internetConnectionError.call();
         }
 
+    }
+
+    public void authorizationClick()
+    {
+        authorizationEvent.call();
     }
 
 

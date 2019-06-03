@@ -15,12 +15,11 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         sIncludes = new android.databinding.ViewDataBinding.IncludedLayouts(17);
         sIncludes.setIncludes(0, 
             new String[] {"layout_description_progress_bar"},
-            new int[] {8},
+            new int[] {9},
             new int[] {R.layout.layout_description_progress_bar});
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.headerBackground, 9);
-        sViewsWithIds.put(R.id.headerResizer, 10);
-        sViewsWithIds.put(R.id.btnLogin, 11);
+        sViewsWithIds.put(R.id.headerBackground, 10);
+        sViewsWithIds.put(R.id.headerResizer, 11);
         sViewsWithIds.put(R.id.viewsWrap, 12);
         sViewsWithIds.put(R.id.ratingBar, 13);
         sViewsWithIds.put(R.id.etReview, 14);
@@ -32,9 +31,11 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     private final android.support.constraint.ConstraintLayout mboundView0;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback2;
+    private final android.view.View.OnClickListener mCallback5;
     @Nullable
-    private final android.view.View.OnClickListener mCallback1;
+    private final android.view.View.OnClickListener mCallback4;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback3;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -46,22 +47,23 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         super(bindingComponent, root, 3
             , (android.widget.TextView) bindings[15]
             , (android.widget.ImageView) bindings[1]
-            , (android.widget.ImageView) bindings[11]
-            , (android.widget.Button) bindings[6]
-            , (android.widget.TextView) bindings[5]
-            , (android.widget.EditText) bindings[14]
-            , (android.support.constraint.ConstraintLayout) bindings[9]
-            , (android.view.View) bindings[10]
             , (android.widget.ImageView) bindings[3]
-            , (lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding) bindings[8]
-            , (com.wang.avi.AVLoadingIndicatorView) bindings[7]
+            , (android.widget.Button) bindings[7]
+            , (android.widget.TextView) bindings[6]
+            , (android.widget.EditText) bindings[14]
+            , (android.support.constraint.ConstraintLayout) bindings[10]
+            , (android.view.View) bindings[11]
+            , (android.widget.ImageView) bindings[4]
+            , (lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding) bindings[9]
+            , (com.wang.avi.AVLoadingIndicatorView) bindings[8]
             , (android.widget.RatingBar) bindings[13]
             , (android.support.v7.widget.RecyclerView) bindings[16]
             , (android.widget.TextView) bindings[2]
-            , (android.widget.TextView) bindings[4]
+            , (android.widget.TextView) bindings[5]
             , (android.support.constraint.ConstraintLayout) bindings[12]
             );
         this.backArrow.setTag(null);
+        this.btnLogin.setTag(null);
         this.btnReview.setTag(null);
         this.description.setTag(null);
         this.image.setTag(null);
@@ -72,8 +74,9 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         this.title.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback2 = new lightIT.test.application.generated.callback.OnClickListener(this, 2);
-        mCallback1 = new lightIT.test.application.generated.callback.OnClickListener(this, 1);
+        mCallback5 = new lightIT.test.application.generated.callback.OnClickListener(this, 3);
+        mCallback4 = new lightIT.test.application.generated.callback.OnClickListener(this, 2);
+        mCallback3 = new lightIT.test.application.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -283,13 +286,14 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         if ((dirtyFlags & 0x40L) != 0) {
             // api target 1
 
-            this.backArrow.setOnClickListener(mCallback1);
+            this.backArrow.setOnClickListener(mCallback3);
+            this.btnLogin.setOnClickListener(mCallback4);
         }
         if ((dirtyFlags & 0x61L) != 0) {
             // api target 1
 
             android.databinding.adapters.TextViewBindingAdapter.setText(this.btnReview, androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableBtnReviewAndroidStringSubmitReviewJavaLangString);
-            android.databinding.adapters.ViewBindingAdapter.setOnClick(this.btnReview, mCallback2, androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue);
+            android.databinding.adapters.ViewBindingAdapter.setOnClick(this.btnReview, mCallback5, androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue);
             this.progressBar.setVisibility(viewModelGetPostButtonClickableViewGONEViewVISIBLE);
         }
         if ((dirtyFlags & 0x64L) != 0) {
@@ -311,7 +315,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
         switch(sourceId) {
-            case 2: {
+            case 3: {
                 // localize variables for thread safety
                 // viewModel.getDescriptionFromApi().getValue().id
                 int viewModelGetDescriptionFromApiId = 0;
@@ -371,6 +375,23 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
                             }
                         }
                     }
+                }
+                break;
+            }
+            case 2: {
+                // localize variables for thread safety
+                // viewModel
+                lightIT.test.application.viewmodel.DescriptionFragmentViewModel viewModel = mViewModel;
+                // viewModel != null
+                boolean viewModelJavaLangObjectNull = false;
+
+
+
+                viewModelJavaLangObjectNull = (viewModel) != (null);
+                if (viewModelJavaLangObjectNull) {
+
+
+                    viewModel.authorizationClick();
                 }
                 break;
             }

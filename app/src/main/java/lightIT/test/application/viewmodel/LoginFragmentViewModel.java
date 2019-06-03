@@ -36,6 +36,7 @@ public class LoginFragmentViewModel extends ViewModel {
     private SingleLiveEvent<Void> emptyLoginFieldsError = new SingleLiveEvent<>();
     private SingleLiveEvent<Void> invalidEmailAddressError = new SingleLiveEvent<>();
     private SingleLiveEvent<Void> internetConnectionError = new SingleLiveEvent<>();
+    private SingleLiveEvent<Void> signUpEvent = new SingleLiveEvent<>();
 
 
     public void sendRequestForLogin(String login, String pass) {
@@ -56,7 +57,7 @@ public class LoginFragmentViewModel extends ViewModel {
             return;
         }
 
-        if (isValidEmail(login)) {
+        //if (isValidEmail(login)) {
 
         if (networkHelper.isNetworkAvailable()) {
             loginButtonClickable.setValue(false);
@@ -65,8 +66,13 @@ public class LoginFragmentViewModel extends ViewModel {
             internetConnectionError.call();
         }
 
-        } else
-            invalidEmailAddressError.call();
+        //} else
+          //  invalidEmailAddressError.call();
+    }
+
+    public void signUp()
+    {
+        signUpEvent.call();
     }
 
     public LiveData<Boolean> getLoginButtonClickable() {
@@ -79,6 +85,10 @@ public class LoginFragmentViewModel extends ViewModel {
 
     public void setLoginButtonClickable() {
         this.loginButtonClickable.setValue(true);
+    }
+
+    public SingleLiveEvent<Void> observeSignUpEvent() {
+        return signUpEvent;
     }
 
     public SingleLiveEvent<Void> observeInvalidEmailAddress() {

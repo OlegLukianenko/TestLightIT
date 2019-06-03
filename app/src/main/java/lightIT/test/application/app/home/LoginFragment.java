@@ -68,26 +68,26 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
         viewModel.observeInternetConnectionError().observe(this, mVoid ->
                 showToast(getString(R.string.check_internet_connection_string), Toast.LENGTH_SHORT));
 
+        viewModel.observeSignUpEvent().observe(this, mVoid -> {
+            showToast(getString(R.string.check_internet_connection_string), Toast.LENGTH_SHORT);
+            //((MainActivity) getActivity()).showFragment(new LoginFragment()));
+        });
     }
 
     private void handleLoginResponse(ResponseWrap<LoginResponse> response) {
-        if (response.status) {
+        if (response.data.success) {
             sharedPreferences.edit().putString(getString(R.string.token), response.data.token).apply();
-//            Intent intent = new Intent(mContext, MainActivity.class);
-//            startActivity(intent);
-//            getActivity().finish();
+            getActivity().onBackPressed();
         } else {
             if (response.statusCode == TIMEOUT_CODE) {
                 if (networkHelper.isNetworkAvailable()) {
                     showToast(getString(R.string.poor_internet_connection), Toast.LENGTH_LONG);
                 }
+            } else {
+                showToast(getString(R.string.not_found), Toast.LENGTH_SHORT);
             }
-            else {
-                showToast(response.message, Toast.LENGTH_SHORT);
-            }
-
-            viewModel.setLoginButtonClickable();
         }
+        viewModel.setLoginButtonClickable();
     }
 
     private void showLoginFields() {

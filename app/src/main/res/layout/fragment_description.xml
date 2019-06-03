@@ -82,6 +82,7 @@
                 android:layout_marginEnd="16dp"
                 android:elevation="3dp"
                 android:clickable="true"
+                android:onClick="@{() -> viewModel.authorizationClick()}"
                 android:src="@drawable/ic_login_ripple"
                 app:layout_constraintBottom_toBottomOf="@+id/textPricing"
                 app:layout_constraintDimensionRatio="1:1"

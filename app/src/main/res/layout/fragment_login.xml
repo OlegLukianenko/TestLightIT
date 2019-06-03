@@ -91,14 +91,16 @@
                 app:layout_constraintWidth_percent="0.8" />
 
             <TextView
-                android:id="@+id/forgotPassword"
+                android:id="@+id/signUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="@string/string_forgot_password"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:text="@string/dont_have_an_account"
+                android:textColor="@drawable/text_btn_selector"
+                android:textSize="16sp"
+                android:clickable="true"
+                android:onClick="@{() -> viewModel.signUp()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

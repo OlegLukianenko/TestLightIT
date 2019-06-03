@@ -4,30 +4,40 @@ package lightIT.test.application.viewmodel;
 import dagger.internal.Factory;
 import javax.inject.Provider;
 import lightIT.test.application.data.repository.RepositoryApi;
+import lightIT.test.application.utils.NetworkHelper;
 
 public final class LoginFragmentViewModel_Factory implements Factory<LoginFragmentViewModel> {
   private final Provider<RepositoryApi> repositoryApiProvider;
 
-  public LoginFragmentViewModel_Factory(Provider<RepositoryApi> repositoryApiProvider) {
+  private final Provider<NetworkHelper> networkHelperProvider;
+
+  public LoginFragmentViewModel_Factory(
+      Provider<RepositoryApi> repositoryApiProvider,
+      Provider<NetworkHelper> networkHelperProvider) {
     this.repositoryApiProvider = repositoryApiProvider;
+    this.networkHelperProvider = networkHelperProvider;
   }
 
   @Override
   public LoginFragmentViewModel get() {
-    return provideInstance(repositoryApiProvider);
+    return provideInstance(repositoryApiProvider, networkHelperProvider);
   }
 
   public static LoginFragmentViewModel provideInstance(
-      Provider<RepositoryApi> repositoryApiProvider) {
+      Provider<RepositoryApi> repositoryApiProvider,
+      Provider<NetworkHelper> networkHelperProvider) {
     LoginFragmentViewModel instance = new LoginFragmentViewModel();
     LoginFragmentViewModel_MembersInjector.injectRepositoryApi(
         instance, repositoryApiProvider.get());
+    LoginFragmentViewModel_MembersInjector.injectNetworkHelper(
+        instance, networkHelperProvider.get());
     return instance;
   }
 
   public static LoginFragmentViewModel_Factory create(
-      Provider<RepositoryApi> repositoryApiProvider) {
-    return new LoginFragmentViewModel_Factory(repositoryApiProvider);
+      Provider<RepositoryApi> repositoryApiProvider,
+      Provider<NetworkHelper> networkHelperProvider) {
+    return new LoginFragmentViewModel_Factory(repositoryApiProvider, networkHelperProvider);
   }
 
   public static LoginFragmentViewModel newLoginFragmentViewModel() {
