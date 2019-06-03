@@ -18,10 +18,10 @@ public interface ServerApi {
     @GET("/api/products/")
     Call<List<Product>> getProductList();
 
-    @GET("/api/reviews/{productId}/")
+    @GET("/api/reviews/{productId}")
     Call<List<Review>> getReviewList(@Path("productId") int productId);
 
-    @POST("/api/reviews/{productId}/")
-    Call<ReviewResponse> postReview(@Header("token") String token, @Path("productId") int productId, @Body ReviewRequest reviewRequest);
+    @POST("/api/reviews/{productId}")
+    Call<ReviewResponse> postReview(@Header("Authorization: Token ") String token, @Path("productId") int productId, @Body ReviewRequest reviewRequest);
 
 }

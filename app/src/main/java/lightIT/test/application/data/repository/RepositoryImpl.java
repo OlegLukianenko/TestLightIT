@@ -10,7 +10,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import lightIT.test.application.data.retrofit.ResponseWrap;
+import lightIT.test.application.data.retrofit.request.LoginRequest;
 import lightIT.test.application.data.retrofit.request.ReviewRequest;
+import lightIT.test.application.data.retrofit.response.LoginResponse;
 import lightIT.test.application.data.retrofit.response.Product;
 import lightIT.test.application.data.retrofit.response.Review;
 import lightIT.test.application.data.retrofit.response.ReviewResponse;
@@ -104,7 +106,7 @@ public class RepositoryImpl implements RepositoryApi {
     @Override
     public void postRequestForReview(int productId, ReviewRequest reviewRequest, MutableLiveData<ResponseWrap<ReviewResponse>> reviewResponseMutableLiveData) {
 
-        Call<ReviewResponse> messages = serverApi.postReview("d1870a6eb394285f6bd2da8392590119b173b27a", productId, reviewRequest);
+        Call<ReviewResponse> messages = serverApi.postReview("6352d8c3cea5fe1034840f4e710538b48daac598", productId, reviewRequest);
         messages.enqueue(new Callback<ReviewResponse>() {
             @Override
             public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {
@@ -132,6 +134,16 @@ public class RepositoryImpl implements RepositoryApi {
             }
         });
     }
+
+
+
+    @Override
+    public void sendLoginRequest(LoginRequest loginRequest, MutableLiveData<ResponseWrap<LoginResponse>> loginResponseMutableLiveData) {
+
+    }
+
+
+
 
 
     private String getErrorMessage(Response<?> response) {

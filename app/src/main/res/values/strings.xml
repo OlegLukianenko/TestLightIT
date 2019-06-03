@@ -33,8 +33,12 @@
 
     <string name="rate">Rate: </string>
     <string name="comment">Comment: </string>
-    <string name="empty_login_fields_string">Field is empty</string>
+    <string name="empty_login_field_string">Field is empty</string>
     <string name="check_internet_connection_string">Please check your internet connection and try again.</string>
 
-
+    <string name="empty_username_string">Login field is empty</string>
+    <string name="empty_password_string">Password field is empty</string>
+    <string name="empty_login_fields_string">Fields are empty</string>
+    <string name="invalid_email_address">Your e-mail address is invalid.</string>
+    <string name="token">user_token</string>
 </resources>
