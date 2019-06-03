@@ -18,7 +18,8 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements li
         sViewsWithIds.put(R.id.loginViewsWrap, 5);
         sViewsWithIds.put(R.id.etUsername, 6);
         sViewsWithIds.put(R.id.etPassword, 7);
-        sViewsWithIds.put(R.id.guideline_h_1, 8);
+        sViewsWithIds.put(R.id.tvDontHaveAccount, 8);
+        sViewsWithIds.put(R.id.guideline_h_1, 9);
     }
     // views
     @NonNull
@@ -33,7 +34,7 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements li
     // Inverse Binding Event Handlers
 
     public FragmentLoginBindingImpl(@Nullable android.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 9, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 10, sIncludes, sViewsWithIds));
     }
     private FragmentLoginBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 1
@@ -41,10 +42,11 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements li
             , (android.widget.Button) bindings[1]
             , (android.widget.EditText) bindings[7]
             , (android.widget.EditText) bindings[6]
-            , (android.support.constraint.Guideline) bindings[8]
+            , (android.support.constraint.Guideline) bindings[9]
             , (android.support.constraint.ConstraintLayout) bindings[5]
             , (com.wang.avi.AVLoadingIndicatorView) bindings[3]
             , (android.widget.TextView) bindings[2]
+            , (android.widget.TextView) bindings[8]
             );
         this.btnLogin.setTag(null);
         this.mboundView0 = (android.support.constraint.ConstraintLayout) bindings[0];

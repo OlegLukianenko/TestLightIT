@@ -40,6 +40,10 @@ public class DescriptionFragmentViewModel extends ViewModel {
     private SingleLiveEvent<Void> internetConnectionError = new SingleLiveEvent<>();
 
     private SingleLiveEvent<Void> authorizationEvent = new SingleLiveEvent<>();
+    private MutableLiveData<Boolean> isAuthorizationEvent = new MutableLiveData<>();
+    private SingleLiveEvent<Void> shouldSignEvent = new SingleLiveEvent<>();
+    private SingleLiveEvent<Void> logoutClickEvent = new SingleLiveEvent<>();
+
 
 
     public void sendReviewRequest(int productId) {
@@ -48,6 +52,10 @@ public class DescriptionFragmentViewModel extends ViewModel {
 
     public MutableLiveData<ResponseWrap<List<Review>>> getReviewtListResponseMutable() {
         return reviewtListMutableLiveData;
+    }
+
+    public MutableLiveData<Boolean> getIsAuthorizationEvent() {
+        return isAuthorizationEvent;
     }
 
     public MutableLiveData<Product> getDescriptionFromApi() {
@@ -81,6 +89,15 @@ public class DescriptionFragmentViewModel extends ViewModel {
         return authorizationEvent;
     }
 
+    public SingleLiveEvent<Void> observeShouldSignEvent() {
+        return shouldSignEvent;
+    }
+
+    public SingleLiveEvent<Void> observeLogoutClickEvent() {
+        return logoutClickEvent;
+    }
+
+
     public void postRequestForReview(String text, int rate, int productId) {
 
         if (text.isEmpty()) {
@@ -97,10 +114,19 @@ public class DescriptionFragmentViewModel extends ViewModel {
 
     }
 
+    public void shouldSignEvent()
+    {
+        shouldSignEvent.call();
+    }
+
     public void authorizationClick()
     {
         authorizationEvent.call();
     }
 
+    public void  logoutClick()
+    {
+        logoutClickEvent.call();
+    }
 
 }

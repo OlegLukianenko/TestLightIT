@@ -106,7 +106,7 @@ public class RepositoryImpl implements RepositoryApi {
     @Override
     public void postRequestForReview(int productId, ReviewRequest reviewRequest, MutableLiveData<ResponseWrap<ReviewResponse>> reviewResponseMutableLiveData) {
 
-        Call<ReviewResponse> messages = serverApi.postReview("Token e0a56837819155f54ec09088a2d8d1b80a0759b4", productId, reviewRequest);
+        Call<ReviewResponse> messages = serverApi.postReview("Token 27b0d2fadb5b8f2ccb65094c4e6e396f85387f0d", productId, reviewRequest);
         messages.enqueue(new Callback<ReviewResponse>() {
             @Override
             public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {

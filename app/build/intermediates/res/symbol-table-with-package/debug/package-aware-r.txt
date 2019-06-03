@@ -868,6 +868,7 @@ id titleRate
 id title_template
 id top
 id topPanel
+id tvDontHaveAccount
 id uniform
 id up
 id useLogo
@@ -1006,6 +1007,7 @@ string string_forgot_password
 string submit_review
 string token
 string type_your_review
+string you_should_sign
 style AVLoadingIndicatorView
 style AVLoadingIndicatorView_Large
 style AVLoadingIndicatorView_Small

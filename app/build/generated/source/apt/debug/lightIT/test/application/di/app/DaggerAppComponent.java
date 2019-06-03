@@ -472,6 +472,8 @@ public final class DaggerAppComponent implements AppComponent {
             instance, getDescriptionFragmentViewModel());
         DescriptionFragment_MembersInjector.injectNetworkHelper(
             instance, DaggerAppComponent.this.provideNetworkHelperProvider.get());
+        DescriptionFragment_MembersInjector.injectSharedPreferences(
+            instance, DaggerAppComponent.this.provideSharedPreferencesProvider.get());
         DescriptionFragment_MembersInjector.injectReviewRecyclerAdapter(
             instance,
             DescriptionFragmentModule_ProvideReviewAdapterFactory.proxyProvideReviewAdapter(

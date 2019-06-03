@@ -3279,14 +3279,15 @@ public final class R {
     public static final int title_template=0x7f0700ae;
     public static final int top=0x7f0700af;
     public static final int topPanel=0x7f0700b0;
-    public static final int uniform=0x7f0700b1;
-    public static final int up=0x7f0700b2;
-    public static final int useLogo=0x7f0700b3;
-    public static final int username=0x7f0700b4;
-    public static final int viewsWrap=0x7f0700b5;
-    public static final int withText=0x7f0700b6;
-    public static final int wrap=0x7f0700b7;
-    public static final int wrap_content=0x7f0700b8;
+    public static final int tvDontHaveAccount=0x7f0700b1;
+    public static final int uniform=0x7f0700b2;
+    public static final int up=0x7f0700b3;
+    public static final int useLogo=0x7f0700b4;
+    public static final int username=0x7f0700b5;
+    public static final int viewsWrap=0x7f0700b6;
+    public static final int withText=0x7f0700b7;
+    public static final int wrap=0x7f0700b8;
+    public static final int wrap_content=0x7f0700b9;
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f080000;
@@ -3425,6 +3426,7 @@ public final class R {
     public static final int submit_review=0x7f0b0048;
     public static final int token=0x7f0b0049;
     public static final int type_your_review=0x7f0b004a;
+    public static final int you_should_sign=0x7f0b004b;
   }
   public static final class style {
     public static final int AVLoadingIndicatorView=0x7f0c0000;

@@ -15,14 +15,13 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         sIncludes = new android.databinding.ViewDataBinding.IncludedLayouts(17);
         sIncludes.setIncludes(0, 
             new String[] {"layout_description_progress_bar"},
-            new int[] {9},
+            new int[] {10},
             new int[] {R.layout.layout_description_progress_bar});
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.headerBackground, 10);
-        sViewsWithIds.put(R.id.headerResizer, 11);
-        sViewsWithIds.put(R.id.viewsWrap, 12);
-        sViewsWithIds.put(R.id.ratingBar, 13);
-        sViewsWithIds.put(R.id.etReview, 14);
+        sViewsWithIds.put(R.id.headerBackground, 11);
+        sViewsWithIds.put(R.id.headerResizer, 12);
+        sViewsWithIds.put(R.id.viewsWrap, 13);
+        sViewsWithIds.put(R.id.ratingBar, 14);
         sViewsWithIds.put(R.id.ReviewTitle, 15);
         sViewsWithIds.put(R.id.recycleView, 16);
     }
@@ -44,28 +43,29 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         this(bindingComponent, root, mapBindings(bindingComponent, root, 17, sIncludes, sViewsWithIds));
     }
     private FragmentDescriptionBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
-        super(bindingComponent, root, 3
+        super(bindingComponent, root, 4
             , (android.widget.TextView) bindings[15]
             , (android.widget.ImageView) bindings[1]
             , (android.widget.ImageView) bindings[3]
-            , (android.widget.Button) bindings[7]
+            , (android.widget.Button) bindings[8]
             , (android.widget.TextView) bindings[6]
-            , (android.widget.EditText) bindings[14]
-            , (android.support.constraint.ConstraintLayout) bindings[10]
-            , (android.view.View) bindings[11]
+            , (android.widget.EditText) bindings[7]
+            , (android.support.constraint.ConstraintLayout) bindings[11]
+            , (android.view.View) bindings[12]
             , (android.widget.ImageView) bindings[4]
-            , (lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding) bindings[9]
-            , (com.wang.avi.AVLoadingIndicatorView) bindings[8]
-            , (android.widget.RatingBar) bindings[13]
+            , (lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding) bindings[10]
+            , (com.wang.avi.AVLoadingIndicatorView) bindings[9]
+            , (android.widget.RatingBar) bindings[14]
             , (android.support.v7.widget.RecyclerView) bindings[16]
             , (android.widget.TextView) bindings[2]
             , (android.widget.TextView) bindings[5]
-            , (android.support.constraint.ConstraintLayout) bindings[12]
+            , (android.support.constraint.ConstraintLayout) bindings[13]
             );
         this.backArrow.setTag(null);
         this.btnLogin.setTag(null);
         this.btnReview.setTag(null);
         this.description.setTag(null);
+        this.etReview.setTag(null);
         this.image.setTag(null);
         this.mboundView0 = (android.support.constraint.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
@@ -83,7 +83,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x40L;
+                mDirtyFlags = 0x80L;
         }
         includeLayoutProgressBar.invalidateAll();
         requestRebind();
@@ -126,7 +126,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     public void setHandler(@Nullable lightIT.test.application.app.home.DescriptionFragment Handler) {
         this.mHandler = Handler;
         synchronized(this) {
-            mDirtyFlags |= 0x10L;
+            mDirtyFlags |= 0x20L;
         }
         notifyPropertyChanged(BR.handler);
         super.requestRebind();
@@ -134,7 +134,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     public void setViewModel(@Nullable lightIT.test.application.viewmodel.DescriptionFragmentViewModel ViewModel) {
         this.mViewModel = ViewModel;
         synchronized(this) {
-            mDirtyFlags |= 0x20L;
+            mDirtyFlags |= 0x40L;
         }
         notifyPropertyChanged(BR.viewModel);
         super.requestRebind();
@@ -152,8 +152,10 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
             case 0 :
                 return onChangeViewModelGetPostButtonClickable((android.arch.lifecycle.MutableLiveData<java.lang.Boolean>) object, fieldId);
             case 1 :
-                return onChangeIncludeLayoutProgressBar((lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding) object, fieldId);
+                return onChangeViewModelGetIsAuthorizationEvent((android.arch.lifecycle.MutableLiveData<java.lang.Boolean>) object, fieldId);
             case 2 :
+                return onChangeIncludeLayoutProgressBar((lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding) object, fieldId);
+            case 3 :
                 return onChangeViewModelGetDescriptionFromApi((android.arch.lifecycle.MutableLiveData<lightIT.test.application.data.retrofit.response.Product>) object, fieldId);
         }
         return false;
@@ -167,7 +169,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         }
         return false;
     }
-    private boolean onChangeIncludeLayoutProgressBar(lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding IncludeLayoutProgressBar, int fieldId) {
+    private boolean onChangeViewModelGetIsAuthorizationEvent(android.arch.lifecycle.MutableLiveData<java.lang.Boolean> ViewModelGetIsAuthorizationEvent, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x2L;
@@ -176,10 +178,19 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         }
         return false;
     }
-    private boolean onChangeViewModelGetDescriptionFromApi(android.arch.lifecycle.MutableLiveData<lightIT.test.application.data.retrofit.response.Product> ViewModelGetDescriptionFromApi, int fieldId) {
+    private boolean onChangeIncludeLayoutProgressBar(lightIT.test.application.databinding.LayoutDescriptionProgressBarBinding IncludeLayoutProgressBar, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x4L;
+            }
+            return true;
+        }
+        return false;
+    }
+    private boolean onChangeViewModelGetDescriptionFromApi(android.arch.lifecycle.MutableLiveData<lightIT.test.application.data.retrofit.response.Product> ViewModelGetDescriptionFromApi, int fieldId) {
+        if (fieldId == BR._all) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x8L;
             }
             return true;
         }
@@ -195,23 +206,28 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         }
         java.lang.Boolean viewModelGetPostButtonClickableGetValue = null;
         boolean androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue = false;
-        boolean androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickable = false;
+        android.graphics.drawable.Drawable viewModelGetIsAuthorizationEventBtnLoginAndroidDrawableIcLogoutRippleBtnLoginAndroidDrawableIcLoginRipple = null;
+        java.lang.Boolean viewModelGetIsAuthorizationEventGetValue = null;
         android.arch.lifecycle.MutableLiveData<java.lang.Boolean> viewModelGetPostButtonClickable = null;
+        android.arch.lifecycle.MutableLiveData<java.lang.Boolean> viewModelGetIsAuthorizationEvent = null;
         java.lang.String viewModelGetDescriptionFromApiImg = null;
         java.lang.String viewModelGetDescriptionFromApiText = null;
         java.lang.String imageAndroidStringIconUrlViewModelGetDescriptionFromApiImg = null;
         lightIT.test.application.app.home.DescriptionFragment handler = mHandler;
         lightIT.test.application.data.retrofit.response.Product viewModelGetDescriptionFromApiGetValue = null;
+        boolean viewModelGetIsAuthorizationEventBooleanTrueBooleanFalse = false;
         int viewModelGetPostButtonClickableViewGONEViewVISIBLE = 0;
-        java.lang.String androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableBtnReviewAndroidStringSubmitReviewJavaLangString = null;
+        boolean androidDatabindingViewDataBindingSafeUnboxViewModelGetIsAuthorizationEventGetValue = false;
+        java.lang.String viewModelGetPostButtonClickableBtnReviewAndroidStringSubmitReviewJavaLangString = null;
+        java.lang.String viewModelGetIsAuthorizationEventEtReviewAndroidStringTypeYourReviewEtReviewAndroidStringYouShouldSign = null;
         java.lang.String viewModelGetDescriptionFromApiTitle = null;
         android.arch.lifecycle.MutableLiveData<lightIT.test.application.data.retrofit.response.Product> viewModelGetDescriptionFromApi = null;
         lightIT.test.application.viewmodel.DescriptionFragmentViewModel viewModel = mViewModel;
 
-        if ((dirtyFlags & 0x65L) != 0) {
+        if ((dirtyFlags & 0xcbL) != 0) {
 
 
-            if ((dirtyFlags & 0x61L) != 0) {
+            if ((dirtyFlags & 0xc1L) != 0) {
 
                     if (viewModel != null) {
                         // read viewModel.getPostButtonClickable()
@@ -228,22 +244,14 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
 
                     // read android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue())
                     androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue = android.databinding.ViewDataBinding.safeUnbox(viewModelGetPostButtonClickableGetValue);
-                    // read android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue())
-                    androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickable = android.databinding.ViewDataBinding.safeUnbox(viewModelGetPostButtonClickableGetValue);
-                if((dirtyFlags & 0x61L) != 0) {
+                if((dirtyFlags & 0xc1L) != 0) {
                     if(androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue) {
-                            dirtyFlags |= 0x100L;
+                            dirtyFlags |= 0x2000L;
+                            dirtyFlags |= 0x8000L;
                     }
                     else {
-                            dirtyFlags |= 0x80L;
-                    }
-                }
-                if((dirtyFlags & 0x61L) != 0) {
-                    if(androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickable) {
-                            dirtyFlags |= 0x400L;
-                    }
-                    else {
-                            dirtyFlags |= 0x200L;
+                            dirtyFlags |= 0x1000L;
+                            dirtyFlags |= 0x4000L;
                     }
                 }
 
@@ -251,15 +259,53 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
                     // read android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? View.GONE : View.VISIBLE
                     viewModelGetPostButtonClickableViewGONEViewVISIBLE = ((androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue) ? (android.view.View.GONE) : (android.view.View.VISIBLE));
                     // read android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? @android:string/submit_review : ""
-                    androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableBtnReviewAndroidStringSubmitReviewJavaLangString = ((androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickable) ? (btnReview.getResources().getString(R.string.submit_review)) : (""));
+                    viewModelGetPostButtonClickableBtnReviewAndroidStringSubmitReviewJavaLangString = ((androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue) ? (btnReview.getResources().getString(R.string.submit_review)) : (""));
             }
-            if ((dirtyFlags & 0x64L) != 0) {
+            if ((dirtyFlags & 0xc2L) != 0) {
+
+                    if (viewModel != null) {
+                        // read viewModel.getIsAuthorizationEvent()
+                        viewModelGetIsAuthorizationEvent = viewModel.getIsAuthorizationEvent();
+                    }
+                    updateLiveDataRegistration(1, viewModelGetIsAuthorizationEvent);
+
+
+                    if (viewModelGetIsAuthorizationEvent != null) {
+                        // read viewModel.getIsAuthorizationEvent().getValue()
+                        viewModelGetIsAuthorizationEventGetValue = viewModelGetIsAuthorizationEvent.getValue();
+                    }
+
+
+                    // read android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue())
+                    androidDatabindingViewDataBindingSafeUnboxViewModelGetIsAuthorizationEventGetValue = android.databinding.ViewDataBinding.safeUnbox(viewModelGetIsAuthorizationEventGetValue);
+                if((dirtyFlags & 0xc2L) != 0) {
+                    if(androidDatabindingViewDataBindingSafeUnboxViewModelGetIsAuthorizationEventGetValue) {
+                            dirtyFlags |= 0x200L;
+                            dirtyFlags |= 0x800L;
+                            dirtyFlags |= 0x20000L;
+                    }
+                    else {
+                            dirtyFlags |= 0x100L;
+                            dirtyFlags |= 0x400L;
+                            dirtyFlags |= 0x10000L;
+                    }
+                }
+
+
+                    // read android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue()) ? @android:drawable/ic_logout_ripple : @android:drawable/ic_login_ripple
+                    viewModelGetIsAuthorizationEventBtnLoginAndroidDrawableIcLogoutRippleBtnLoginAndroidDrawableIcLoginRipple = ((androidDatabindingViewDataBindingSafeUnboxViewModelGetIsAuthorizationEventGetValue) ? (getDrawableFromResource(btnLogin, R.drawable.ic_logout_ripple)) : (getDrawableFromResource(btnLogin, R.drawable.ic_login_ripple)));
+                    // read android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue()) ? true : false
+                    viewModelGetIsAuthorizationEventBooleanTrueBooleanFalse = ((androidDatabindingViewDataBindingSafeUnboxViewModelGetIsAuthorizationEventGetValue) ? (true) : (false));
+                    // read android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue()) ? @android:string/type_your_review : @android:string/you_should_sign
+                    viewModelGetIsAuthorizationEventEtReviewAndroidStringTypeYourReviewEtReviewAndroidStringYouShouldSign = ((androidDatabindingViewDataBindingSafeUnboxViewModelGetIsAuthorizationEventGetValue) ? (etReview.getResources().getString(R.string.type_your_review)) : (etReview.getResources().getString(R.string.you_should_sign)));
+            }
+            if ((dirtyFlags & 0xc8L) != 0) {
 
                     if (viewModel != null) {
                         // read viewModel.getDescriptionFromApi()
                         viewModelGetDescriptionFromApi = viewModel.getDescriptionFromApi();
                     }
-                    updateLiveDataRegistration(2, viewModelGetDescriptionFromApi);
+                    updateLiveDataRegistration(3, viewModelGetDescriptionFromApi);
 
 
                     if (viewModelGetDescriptionFromApi != null) {
@@ -283,20 +329,27 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
             }
         }
         // batch finished
-        if ((dirtyFlags & 0x40L) != 0) {
+        if ((dirtyFlags & 0x80L) != 0) {
             // api target 1
 
             this.backArrow.setOnClickListener(mCallback3);
             this.btnLogin.setOnClickListener(mCallback4);
         }
-        if ((dirtyFlags & 0x61L) != 0) {
+        if ((dirtyFlags & 0xc2L) != 0) {
             // api target 1
 
-            android.databinding.adapters.TextViewBindingAdapter.setText(this.btnReview, androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableBtnReviewAndroidStringSubmitReviewJavaLangString);
+            android.databinding.adapters.ImageViewBindingAdapter.setImageDrawable(this.btnLogin, viewModelGetIsAuthorizationEventBtnLoginAndroidDrawableIcLogoutRippleBtnLoginAndroidDrawableIcLoginRipple);
+            this.etReview.setEnabled(viewModelGetIsAuthorizationEventBooleanTrueBooleanFalse);
+            this.etReview.setHint(viewModelGetIsAuthorizationEventEtReviewAndroidStringTypeYourReviewEtReviewAndroidStringYouShouldSign);
+        }
+        if ((dirtyFlags & 0xc1L) != 0) {
+            // api target 1
+
+            android.databinding.adapters.TextViewBindingAdapter.setText(this.btnReview, viewModelGetPostButtonClickableBtnReviewAndroidStringSubmitReviewJavaLangString);
             android.databinding.adapters.ViewBindingAdapter.setOnClick(this.btnReview, mCallback5, androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue);
             this.progressBar.setVisibility(viewModelGetPostButtonClickableViewGONEViewVISIBLE);
         }
-        if ((dirtyFlags & 0x64L) != 0) {
+        if ((dirtyFlags & 0xc8L) != 0) {
             // api target 1
 
             android.databinding.adapters.TextViewBindingAdapter.setText(this.description, viewModelGetDescriptionFromApiText);
@@ -304,7 +357,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
             android.databinding.adapters.TextViewBindingAdapter.setText(this.textPricing, viewModelGetDescriptionFromApiTitle);
             android.databinding.adapters.TextViewBindingAdapter.setText(this.title, viewModelGetDescriptionFromApiTitle);
         }
-        if ((dirtyFlags & 0x60L) != 0) {
+        if ((dirtyFlags & 0xc0L) != 0) {
             // api target 1
 
             this.includeLayoutProgressBar.setViewModel(viewModel);
@@ -317,8 +370,12 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         switch(sourceId) {
             case 3: {
                 // localize variables for thread safety
+                // viewModel.getIsAuthorizationEvent().getValue()
+                java.lang.Boolean viewModelGetIsAuthorizationEventGetValue = null;
                 // viewModel.getDescriptionFromApi().getValue().id
                 int viewModelGetDescriptionFromApiId = 0;
+                // viewModel.getIsAuthorizationEvent() != null
+                boolean viewModelGetIsAuthorizationEventJavaLangObjectNull = false;
                 // viewModel != null
                 boolean viewModelJavaLangObjectNull = false;
                 // viewModel.getDescriptionFromApi().getValue()
@@ -327,6 +384,8 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
                 boolean viewModelGetDescriptionFromApiJavaLangObjectNull = false;
                 // viewModel.getDescriptionFromApi().getValue() != null
                 boolean viewModelGetDescriptionFromApiGetValueJavaLangObjectNull = false;
+                // viewModel.getIsAuthorizationEvent()
+                android.arch.lifecycle.MutableLiveData<java.lang.Boolean> viewModelGetIsAuthorizationEvent = null;
                 // viewModel.getDescriptionFromApi()
                 android.arch.lifecycle.MutableLiveData<lightIT.test.application.data.retrofit.response.Product> viewModelGetDescriptionFromApi = null;
                 // viewModel
@@ -338,41 +397,62 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
                 if (viewModelJavaLangObjectNull) {
 
 
-                    if ((etReview) != (null)) {
+                    viewModelGetIsAuthorizationEvent = viewModel.getIsAuthorizationEvent();
+
+                    viewModelGetIsAuthorizationEventJavaLangObjectNull = (viewModelGetIsAuthorizationEvent) != (null);
+                    if (viewModelGetIsAuthorizationEventJavaLangObjectNull) {
 
 
-                        etReview.getText();
-                        if ((etReview.getText()) != (null)) {
-
-
-                            etReview.getText().toString();
-
-                            if ((ratingBar) != (null)) {
-
-
-                                ratingBar.getRating();
+                        viewModelGetIsAuthorizationEventGetValue = viewModelGetIsAuthorizationEvent.getValue();
+                        if (viewModelGetIsAuthorizationEventGetValue) {
 
 
 
 
-                                viewModelGetDescriptionFromApi = viewModel.getDescriptionFromApi();
-
-                                viewModelGetDescriptionFromApiJavaLangObjectNull = (viewModelGetDescriptionFromApi) != (null);
-                                if (viewModelGetDescriptionFromApiJavaLangObjectNull) {
+                            if ((etReview) != (null)) {
 
 
-                                    viewModelGetDescriptionFromApiGetValue = viewModelGetDescriptionFromApi.getValue();
-
-                                    viewModelGetDescriptionFromApiGetValueJavaLangObjectNull = (viewModelGetDescriptionFromApiGetValue) != (null);
-                                    if (viewModelGetDescriptionFromApiGetValueJavaLangObjectNull) {
+                                etReview.getText();
+                                if ((etReview.getText()) != (null)) {
 
 
-                                        viewModelGetDescriptionFromApiId = viewModelGetDescriptionFromApiGetValue.id;
+                                    etReview.getText().toString();
 
-                                        viewModel.postRequestForReview(etReview.getText().toString(), ((int) (ratingBar.getRating())), viewModelGetDescriptionFromApiId);
+                                    if ((ratingBar) != (null)) {
+
+
+                                        ratingBar.getRating();
+
+
+
+
+                                        viewModelGetDescriptionFromApi = viewModel.getDescriptionFromApi();
+
+                                        viewModelGetDescriptionFromApiJavaLangObjectNull = (viewModelGetDescriptionFromApi) != (null);
+                                        if (viewModelGetDescriptionFromApiJavaLangObjectNull) {
+
+
+                                            viewModelGetDescriptionFromApiGetValue = viewModelGetDescriptionFromApi.getValue();
+
+                                            viewModelGetDescriptionFromApiGetValueJavaLangObjectNull = (viewModelGetDescriptionFromApiGetValue) != (null);
+                                            if (viewModelGetDescriptionFromApiGetValueJavaLangObjectNull) {
+
+
+                                                viewModelGetDescriptionFromApiId = viewModelGetDescriptionFromApiGetValue.id;
+
+                                                viewModel.postRequestForReview(etReview.getText().toString(), ((int) (ratingBar.getRating())), viewModelGetDescriptionFromApiId);
+                                            }
+                                        }
                                     }
                                 }
                             }
+                        }
+                        else {
+
+
+
+
+                            viewModel.shouldSignEvent();
                         }
                     }
                 }
@@ -380,6 +460,12 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
             }
             case 2: {
                 // localize variables for thread safety
+                // viewModel.getIsAuthorizationEvent().getValue()
+                java.lang.Boolean viewModelGetIsAuthorizationEventGetValue = null;
+                // viewModel.getIsAuthorizationEvent()
+                android.arch.lifecycle.MutableLiveData<java.lang.Boolean> viewModelGetIsAuthorizationEvent = null;
+                // viewModel.getIsAuthorizationEvent() != null
+                boolean viewModelGetIsAuthorizationEventJavaLangObjectNull = false;
                 // viewModel
                 lightIT.test.application.viewmodel.DescriptionFragmentViewModel viewModel = mViewModel;
                 // viewModel != null
@@ -391,7 +477,28 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
                 if (viewModelJavaLangObjectNull) {
 
 
-                    viewModel.authorizationClick();
+                    viewModelGetIsAuthorizationEvent = viewModel.getIsAuthorizationEvent();
+
+                    viewModelGetIsAuthorizationEventJavaLangObjectNull = (viewModelGetIsAuthorizationEvent) != (null);
+                    if (viewModelGetIsAuthorizationEventJavaLangObjectNull) {
+
+
+                        viewModelGetIsAuthorizationEventGetValue = viewModelGetIsAuthorizationEvent.getValue();
+                        if (viewModelGetIsAuthorizationEventGetValue) {
+
+
+
+
+                            viewModel.logoutClick();
+                        }
+                        else {
+
+
+
+
+                            viewModel.authorizationClick();
+                        }
+                    }
                 }
                 break;
             }
@@ -418,16 +525,23 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
         flag 0 (0x1L): viewModel.getPostButtonClickable()
-        flag 1 (0x2L): includeLayoutProgressBar
-        flag 2 (0x3L): viewModel.getDescriptionFromApi()
-        flag 3 (0x4L): view
-        flag 4 (0x5L): handler
-        flag 5 (0x6L): viewModel
-        flag 6 (0x7L): null
-        flag 7 (0x8L): android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? View.GONE : View.VISIBLE
-        flag 8 (0x9L): android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? View.GONE : View.VISIBLE
-        flag 9 (0xaL): android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? @android:string/submit_review : ""
-        flag 10 (0xbL): android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? @android:string/submit_review : ""
+        flag 1 (0x2L): viewModel.getIsAuthorizationEvent()
+        flag 2 (0x3L): includeLayoutProgressBar
+        flag 3 (0x4L): viewModel.getDescriptionFromApi()
+        flag 4 (0x5L): view
+        flag 5 (0x6L): handler
+        flag 6 (0x7L): viewModel
+        flag 7 (0x8L): null
+        flag 8 (0x9L): android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue()) ? @android:drawable/ic_logout_ripple : @android:drawable/ic_login_ripple
+        flag 9 (0xaL): android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue()) ? @android:drawable/ic_logout_ripple : @android:drawable/ic_login_ripple
+        flag 10 (0xbL): android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue()) ? true : false
+        flag 11 (0xcL): android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue()) ? true : false
+        flag 12 (0xdL): android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? View.GONE : View.VISIBLE
+        flag 13 (0xeL): android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? View.GONE : View.VISIBLE
+        flag 14 (0xfL): android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? @android:string/submit_review : ""
+        flag 15 (0x10L): android.databinding.ViewDataBinding.safeUnbox(viewModel.getPostButtonClickable().getValue()) ? @android:string/submit_review : ""
+        flag 16 (0x11L): android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue()) ? @android:string/type_your_review : @android:string/you_should_sign
+        flag 17 (0x12L): android.databinding.ViewDataBinding.safeUnbox(viewModel.getIsAuthorizationEvent().getValue()) ? @android:string/type_your_review : @android:string/you_should_sign
     flag mapping end*/
     //end
 }

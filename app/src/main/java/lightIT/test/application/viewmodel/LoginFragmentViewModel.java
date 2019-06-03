@@ -19,7 +19,6 @@ public class LoginFragmentViewModel extends ViewModel {
     @Inject
     RepositoryApi repositoryApi;
 
-
     @Inject
     protected NetworkHelper networkHelper;
 
@@ -67,11 +66,10 @@ public class LoginFragmentViewModel extends ViewModel {
         }
 
         //} else
-          //  invalidEmailAddressError.call();
+        //  invalidEmailAddressError.call();
     }
 
-    public void signUp()
-    {
+    public void signUp() {
         signUpEvent.call();
     }
 

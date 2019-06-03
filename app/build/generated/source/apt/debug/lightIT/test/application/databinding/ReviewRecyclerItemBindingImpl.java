@@ -16,7 +16,7 @@ public class ReviewRecyclerItemBindingImpl extends ReviewRecyclerItemBinding  {
         sViewsWithIds = new android.util.SparseIntArray();
         sViewsWithIds.put(R.id.rounded_background, 4);
         sViewsWithIds.put(R.id.titleRate, 5);
-        sViewsWithIds.put(R.id.comment, 6);
+        sViewsWithIds.put(R.id.titleComment, 6);
     }
     // views
     @NonNull
@@ -31,17 +31,17 @@ public class ReviewRecyclerItemBindingImpl extends ReviewRecyclerItemBinding  {
     }
     private ReviewRecyclerItemBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (android.widget.TextView) bindings[6]
+            , (android.widget.TextView) bindings[3]
             , (android.widget.TextView) bindings[2]
             , (android.view.View) bindings[4]
-            , (android.widget.TextView) bindings[3]
+            , (android.widget.TextView) bindings[6]
             , (android.widget.TextView) bindings[5]
             , (android.widget.TextView) bindings[1]
             );
+        this.comment.setTag(null);
         this.mboundView0 = (android.support.constraint.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
         this.rate.setTag(null);
-        this.titleComment.setTag(null);
         this.username.setTag(null);
         setRootTag(root);
         // listeners
@@ -130,8 +130,8 @@ public class ReviewRecyclerItemBindingImpl extends ReviewRecyclerItemBinding  {
         if ((dirtyFlags & 0x3L) != 0) {
             // api target 1
 
+            android.databinding.adapters.TextViewBindingAdapter.setText(this.comment, dataText);
             android.databinding.adapters.TextViewBindingAdapter.setText(this.rate, dataRate);
-            android.databinding.adapters.TextViewBindingAdapter.setText(this.titleComment, dataText);
             android.databinding.adapters.TextViewBindingAdapter.setText(this.username, dataCreatedByUsername);
         }
     }

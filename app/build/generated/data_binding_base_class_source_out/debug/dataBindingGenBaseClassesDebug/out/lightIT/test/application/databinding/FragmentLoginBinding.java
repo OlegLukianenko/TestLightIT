@@ -42,6 +42,9 @@ public abstract class FragmentLoginBinding extends ViewDataBinding {
   @NonNull
   public final TextView signUp;
 
+  @NonNull
+  public final TextView tvDontHaveAccount;
+
   @Bindable
   protected LoginFragmentViewModel mViewModel;
 
@@ -51,7 +54,7 @@ public abstract class FragmentLoginBinding extends ViewDataBinding {
   protected FragmentLoginBinding(DataBindingComponent _bindingComponent, View _root,
       int _localFieldCount, TextView appName, Button btnLogin, EditText etPassword,
       EditText etUsername, Guideline guidelineH1, ConstraintLayout loginViewsWrap,
-      AVLoadingIndicatorView progressBar, TextView signUp) {
+      AVLoadingIndicatorView progressBar, TextView signUp, TextView tvDontHaveAccount) {
     super(_bindingComponent, _root, _localFieldCount);
     this.appName = appName;
     this.btnLogin = btnLogin;
@@ -61,6 +64,7 @@ public abstract class FragmentLoginBinding extends ViewDataBinding {
     this.loginViewsWrap = loginViewsWrap;
     this.progressBar = progressBar;
     this.signUp = signUp;
+    this.tvDontHaveAccount = tvDontHaveAccount;
   }
 
   public abstract void setViewModel(@Nullable LoginFragmentViewModel viewModel);

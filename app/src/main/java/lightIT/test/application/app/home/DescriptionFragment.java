@@ -1,9 +1,11 @@
 package lightIT.test.application.app.home;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -30,12 +32,17 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
     protected NetworkHelper networkHelper;
 
     @Inject
+    protected SharedPreferences sharedPreferences;
+
+    @Inject
     ReviewRecyclerAdapter reviewRecyclerAdapter;
 
     @Override
     protected int getLayout() {
         return R.layout.fragment_description;
     }
+
+    int productId;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -53,8 +60,14 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
         if (bundle != null) {
             Product product = bundle.getParcelable("product");
             viewModel.getDescriptionFromApi().postValue(product);
-            viewModel.sendReviewRequest(product.id);
+            productId = product.id;
+            viewModel.sendReviewRequest(productId);
         }
+
+        if (sharedPreferences.getString(getString(R.string.token), "").isEmpty())
+            viewModel.getIsAuthorizationEvent().postValue(false);
+        else
+            viewModel.getIsAuthorizationEvent().postValue(true);
     }
 
     private void initUserAdapter() {
@@ -85,6 +98,8 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
         {
             if (postReviewResponseWrap.status) {
                 viewModel.getPostButtonClickable().setValue(true);
+                viewModel.sendReviewRequest(productId);
+
             } else {
                 if (postReviewResponseWrap.statusCode == TIMEOUT_CODE) {
                     if (networkHelper.isNetworkAvailable()) {
@@ -106,7 +121,29 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
 
         viewModel.observeAuthorizationEvent().observe(this, mVoid ->
                 ((MainActivity) getActivity()).showFragment(new LoginFragment()));
+
+        viewModel.observeShouldSignEvent().observe(this, mVoid ->
+                showToast(getString(R.string.you_should_sign), Toast.LENGTH_SHORT));
+
+        viewModel.observeLogoutClickEvent().observe(this, mVoid -> {
+            sharedPreferences.edit().putString(getString(R.string.token), "").apply();
+            redrawFragment();
+        });
+
+
     }
+
+    private void redrawFragment() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .detach(this)
+                .commitNowAllowingStateLoss();
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .attach(this)
+                .commitAllowingStateLoss();
+    }
+
 
     public void clickBackButton() {
         getActivity().onBackPressed();
