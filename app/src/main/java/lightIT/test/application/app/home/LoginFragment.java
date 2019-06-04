@@ -20,6 +20,7 @@ import lightIT.test.application.di.viewmodel.Injectable;
 import lightIT.test.application.utils.NetworkHelper;
 import lightIT.test.application.viewmodel.LoginFragmentViewModel;
 
+import static lightIT.test.application.app.home.MainActivity.USER_TOKEN_SP;
 import static lightIT.test.application.data.repository.RepositoryImpl.TIMEOUT_CODE;
 
 public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
@@ -41,7 +42,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
         super.onViewCreated(view, savedInstanceState);
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
-
+        binding.setHandler(this);
         initSubscribers();
     }
 
@@ -69,14 +70,13 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
                 showToast(getString(R.string.check_internet_connection_string), Toast.LENGTH_SHORT));
 
         viewModel.observeSignUpEvent().observe(this, mVoid -> {
-            showToast(getString(R.string.check_internet_connection_string), Toast.LENGTH_SHORT);
-            //((MainActivity) getActivity()).showFragment(new LoginFragment()));
+            ((MainActivity) getActivity()).showFragment(new RegistrationFragment());
         });
     }
 
     private void handleLoginResponse(ResponseWrap<LoginResponse> response) {
         if (response.data.success) {
-            sharedPreferences.edit().putString(getString(R.string.token), response.data.token).apply();
+            sharedPreferences.edit().putString(USER_TOKEN_SP, response.data.token).apply();
             getActivity().onBackPressed();
         } else {
             if (response.statusCode == TIMEOUT_CODE) {
@@ -84,7 +84,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
                     showToast(getString(R.string.poor_internet_connection), Toast.LENGTH_LONG);
                 }
             } else {
-                showToast(getString(R.string.not_found), Toast.LENGTH_SHORT);
+                showToast(response.data.message, Toast.LENGTH_SHORT);
             }
         }
         viewModel.setLoginButtonClickable();
@@ -101,6 +101,9 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
         });
     }
 
+    public void clickBackButton() {
+        getActivity().onBackPressed();
+    }
 
     @Override
     public void onResume() {

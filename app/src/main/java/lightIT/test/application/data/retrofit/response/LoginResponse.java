@@ -10,6 +10,9 @@ public class LoginResponse {
     @SerializedName("token")
     public String token;
 
+    @SerializedName("message")
+    public String message;
+
     public LoginResponse() { }
 
 }

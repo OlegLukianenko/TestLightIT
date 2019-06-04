@@ -814,6 +814,7 @@ id radio
 id rate
 id ratingBar
 id recycleView
+id registrationViewsWrap
 id right
 id right_icon
 id right_side
@@ -868,7 +869,6 @@ id titleRate
 id title_template
 id top
 id topPanel
-id tvDontHaveAccount
 id uniform
 id up
 id useLogo
@@ -915,6 +915,7 @@ layout activity_splash
 layout fragment_description
 layout fragment_login
 layout fragment_product
+layout fragment_registration
 layout layout_description_progress_bar
 layout layout_produst_progress_bar
 layout layout_snack_bar
@@ -972,6 +973,7 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string app_name
+string autorization
 string cancel
 string change_user
 string check_internet_connection_string
@@ -996,16 +998,15 @@ string ok
 string oops
 string poor_internet_connection
 string rate
+string registration
 string requires_permission
 string restore
 string review
 string search_menu_title
 string settings
-string sign_up
 string status_bar_notification_info_overflow
 string string_forgot_password
 string submit_review
-string token
 string type_your_review
 string you_should_sign
 style AVLoadingIndicatorView

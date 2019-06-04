@@ -17,9 +17,11 @@ import lightIT.test.application.base.BaseFragment;
 import lightIT.test.application.data.retrofit.response.Product;
 import lightIT.test.application.databinding.FragmentDescriptionBinding;
 import lightIT.test.application.di.viewmodel.Injectable;
+import lightIT.test.application.utils.KeyboardStateManager;
 import lightIT.test.application.utils.NetworkHelper;
 import lightIT.test.application.viewmodel.DescriptionFragmentViewModel;
 
+import static lightIT.test.application.app.home.MainActivity.USER_TOKEN_SP;
 import static lightIT.test.application.data.repository.RepositoryImpl.TIMEOUT_CODE;
 
 public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding> implements
@@ -64,7 +66,7 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
             viewModel.sendReviewRequest(productId);
         }
 
-        if (sharedPreferences.getString(getString(R.string.token), "").isEmpty())
+        if (sharedPreferences.getString(USER_TOKEN_SP, "").isEmpty())
             viewModel.getIsAuthorizationEvent().postValue(false);
         else
             viewModel.getIsAuthorizationEvent().postValue(true);
@@ -80,7 +82,6 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
         {
             if (reviewListResponseWrap.status) {
                 reviewRecyclerAdapter.setItems(reviewListResponseWrap.data);
-                viewModel.getProgressBarEvent().postValue(false);
             } else {
                 if (reviewListResponseWrap.statusCode == TIMEOUT_CODE) {
                     if (networkHelper.isNetworkAvailable()) {
@@ -89,8 +90,8 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
                 } else {
                     showToast(reviewListResponseWrap.message, Toast.LENGTH_LONG);
                 }
-                viewModel.getProgressBarEvent().postValue(false);
             }
+            viewModel.getProgressBarEvent().postValue(false);
         });
 
 
@@ -119,18 +120,19 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
                 showToast(getString(R.string.check_internet_connection_string), Toast.LENGTH_SHORT));
 
 
-        viewModel.observeAuthorizationEvent().observe(this, mVoid ->
-                ((MainActivity) getActivity()).showFragment(new LoginFragment()));
+        viewModel.observeAuthorizationEvent().observe(this, mVoid -> {
+            KeyboardStateManager.hideSoftKeyboard(getActivity());
+            ((MainActivity) getActivity()).showFragment(new LoginFragment());
+        });
 
         viewModel.observeShouldSignEvent().observe(this, mVoid ->
                 showToast(getString(R.string.you_should_sign), Toast.LENGTH_SHORT));
 
         viewModel.observeLogoutClickEvent().observe(this, mVoid -> {
-            sharedPreferences.edit().putString(getString(R.string.token), "").apply();
+            KeyboardStateManager.hideSoftKeyboard(getActivity());
+            sharedPreferences.edit().putString(USER_TOKEN_SP, "").apply();
             redrawFragment();
         });
-
-
     }
 
     private void redrawFragment() {
@@ -143,7 +145,6 @@ public class DescriptionFragment extends BaseFragment<FragmentDescriptionBinding
                 .attach(this)
                 .commitAllowingStateLoss();
     }
-
 
     public void clickBackButton() {
         getActivity().onBackPressed();

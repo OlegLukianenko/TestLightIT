@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import lightIT.test.application.viewmodel.DescriptionFragmentViewModel;
 import lightIT.test.application.viewmodel.ProductFragmentViewModel;
 import lightIT.test.application.viewmodel.LoginFragmentViewModel;
+import lightIT.test.application.viewmodel.RegistrationFragmentViewModel;
 import lightIT.test.application.viewmodel.SplashActivityViewModel;
 
 public class ViewModelFactory implements ViewModelProvider.Factory {
@@ -26,6 +27,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
         creators.put(ProductFragmentViewModel.class, component::productFragmentViewModel);
         creators.put(LoginFragmentViewModel.class, component::loginFragmentViewModel);
         creators.put(DescriptionFragmentViewModel.class, component::descriptionFragmentViewModel);
+        creators.put(RegistrationFragmentViewModel.class, component::registrationFragmentViewModel);
     }
 
     @NonNull

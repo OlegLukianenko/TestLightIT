@@ -30,11 +30,11 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
     private final android.support.constraint.ConstraintLayout mboundView0;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback5;
+    private final android.view.View.OnClickListener mCallback8;
     @Nullable
-    private final android.view.View.OnClickListener mCallback4;
+    private final android.view.View.OnClickListener mCallback7;
     @Nullable
-    private final android.view.View.OnClickListener mCallback3;
+    private final android.view.View.OnClickListener mCallback6;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -74,9 +74,9 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         this.title.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback5 = new lightIT.test.application.generated.callback.OnClickListener(this, 3);
-        mCallback4 = new lightIT.test.application.generated.callback.OnClickListener(this, 2);
-        mCallback3 = new lightIT.test.application.generated.callback.OnClickListener(this, 1);
+        mCallback8 = new lightIT.test.application.generated.callback.OnClickListener(this, 3);
+        mCallback7 = new lightIT.test.application.generated.callback.OnClickListener(this, 2);
+        mCallback6 = new lightIT.test.application.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -332,8 +332,8 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
         if ((dirtyFlags & 0x80L) != 0) {
             // api target 1
 
-            this.backArrow.setOnClickListener(mCallback3);
-            this.btnLogin.setOnClickListener(mCallback4);
+            this.backArrow.setOnClickListener(mCallback6);
+            this.btnLogin.setOnClickListener(mCallback7);
         }
         if ((dirtyFlags & 0xc2L) != 0) {
             // api target 1
@@ -346,7 +346,7 @@ public class FragmentDescriptionBindingImpl extends FragmentDescriptionBinding i
             // api target 1
 
             android.databinding.adapters.TextViewBindingAdapter.setText(this.btnReview, viewModelGetPostButtonClickableBtnReviewAndroidStringSubmitReviewJavaLangString);
-            android.databinding.adapters.ViewBindingAdapter.setOnClick(this.btnReview, mCallback5, androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue);
+            android.databinding.adapters.ViewBindingAdapter.setOnClick(this.btnReview, mCallback8, androidDatabindingViewDataBindingSafeUnboxViewModelGetPostButtonClickableGetValue);
             this.progressBar.setVisibility(viewModelGetPostButtonClickableViewGONEViewVISIBLE);
         }
         if ((dirtyFlags & 0xc8L) != 0) {

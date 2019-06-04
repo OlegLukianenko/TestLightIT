@@ -104,9 +104,9 @@ public class RepositoryImpl implements RepositoryApi {
     }
 
     @Override
-    public void postRequestForReview(int productId, ReviewRequest reviewRequest, MutableLiveData<ResponseWrap<ReviewResponse>> reviewResponseMutableLiveData) {
+    public void postRequestForReview(String token, int productId, ReviewRequest reviewRequest, MutableLiveData<ResponseWrap<ReviewResponse>> reviewResponseMutableLiveData) {
 
-        Call<ReviewResponse> messages = serverApi.postReview("Token 27b0d2fadb5b8f2ccb65094c4e6e396f85387f0d", productId, reviewRequest);
+        Call<ReviewResponse> messages = serverApi.postReview(token, productId, reviewRequest);
         messages.enqueue(new Callback<ReviewResponse>() {
             @Override
             public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {
@@ -168,8 +168,36 @@ public class RepositoryImpl implements RepositoryApi {
         });
     }
 
+    @Override
+    public void sendRegistrationRequest(LoginRequest loginRequest, MutableLiveData<ResponseWrap<LoginResponse>> registrationResponseMutableLiveData) {
+        serverApi.sendRegistrationRequest(loginRequest).enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                ResponseWrap<LoginResponse> responseWrap;
 
+                if (response.isSuccessful()) {
+                    responseWrap = new ResponseWrap<>(response.isSuccessful(), response.code(), response.body());
+                } else {
+                    responseWrap = new ResponseWrap<>(response.isSuccessful(), response.code(), getErrorMessage(response));
+                }
 
+                registrationResponseMutableLiveData.postValue(responseWrap);
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                ResponseWrap<LoginResponse> responseWrap;
+
+                if (t instanceof SocketTimeoutException) {
+                    responseWrap = new ResponseWrap<>(false, TIMEOUT_CODE, null, t.getMessage());
+                } else {
+                    responseWrap = new ResponseWrap<>(false, 0, null, t.getMessage());
+                }
+
+                registrationResponseMutableLiveData.postValue(responseWrap);
+            }
+        });
+    }
 
 
     private String getErrorMessage(Response<?> response) {

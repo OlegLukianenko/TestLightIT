@@ -14,7 +14,6 @@ import lightIT.test.application.databinding.ProductRecyclerItemBinding;
 
 public class ProductRecyclerAdapter extends BaseRecyclerAdapter<ProductRecyclerItemBinding, Product, ProductViewHolder> {
 
-
     public ProductItemListListener productItemListListener;
 
     @Inject
@@ -37,8 +36,6 @@ public class ProductRecyclerAdapter extends BaseRecyclerAdapter<ProductRecyclerI
     public int getItemViewType(int position) {
         return position;
     }
-
-
 
     public interface ProductItemListListener {
         void onProductItemClick(Product user);

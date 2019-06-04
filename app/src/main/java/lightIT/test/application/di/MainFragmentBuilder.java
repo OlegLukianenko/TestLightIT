@@ -10,9 +10,11 @@ import dagger.multibindings.IntoMap;
 import lightIT.test.application.app.home.DescriptionFragment;
 import lightIT.test.application.app.home.ProductFragment;
 import lightIT.test.application.app.home.LoginFragment;
+import lightIT.test.application.app.home.RegistrationFragment;
 import lightIT.test.application.di.home.description.DescriptionFragmentComponent;
 import lightIT.test.application.di.home.product.ProductFragmentComponent;
 import lightIT.test.application.di.home.login.LoginFragmentComponent;
+import lightIT.test.application.di.home.registration.RegistrationFragmentComponent;
 
 @Module
 public abstract class MainFragmentBuilder {
@@ -31,6 +33,11 @@ public abstract class MainFragmentBuilder {
     @IntoMap
     @FragmentKey(LoginFragment.class)
     abstract AndroidInjector.Factory<? extends Fragment> bindLoginFragment(LoginFragmentComponent.Builder builder);
+
+    @Binds
+    @IntoMap
+    @FragmentKey(RegistrationFragment.class)
+    abstract AndroidInjector.Factory<? extends Fragment> bindRegistrationFragment(RegistrationFragmentComponent.Builder builder);
 
 }
 

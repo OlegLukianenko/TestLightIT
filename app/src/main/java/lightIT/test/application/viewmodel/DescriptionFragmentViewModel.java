@@ -3,11 +3,13 @@ package lightIT.test.application.viewmodel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.content.SharedPreferences;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import lightIT.test.application.R;
 import lightIT.test.application.base.SingleLiveEvent;
 import lightIT.test.application.data.repository.RepositoryApi;
 import lightIT.test.application.data.retrofit.ResponseWrap;
@@ -17,6 +19,8 @@ import lightIT.test.application.data.retrofit.response.Review;
 import lightIT.test.application.data.retrofit.response.ReviewResponse;
 import lightIT.test.application.utils.NetworkHelper;
 
+import static lightIT.test.application.app.home.MainActivity.USER_TOKEN_SP;
+
 public class DescriptionFragmentViewModel extends ViewModel {
 
     @Inject
@@ -24,6 +28,9 @@ public class DescriptionFragmentViewModel extends ViewModel {
 
     @Inject
     protected NetworkHelper networkHelper;
+
+    @Inject
+    SharedPreferences sharedPreferences;
 
     @Inject
     public DescriptionFragmentViewModel() {
@@ -43,7 +50,6 @@ public class DescriptionFragmentViewModel extends ViewModel {
     private MutableLiveData<Boolean> isAuthorizationEvent = new MutableLiveData<>();
     private SingleLiveEvent<Void> shouldSignEvent = new SingleLiveEvent<>();
     private SingleLiveEvent<Void> logoutClickEvent = new SingleLiveEvent<>();
-
 
 
     public void sendReviewRequest(int productId) {
@@ -76,7 +82,6 @@ public class DescriptionFragmentViewModel extends ViewModel {
         return postReviewResponse;
     }
 
-
     public SingleLiveEvent<Void> observeEmptyFieldsError() {
         return emptyFieldsError;
     }
@@ -107,25 +112,22 @@ public class DescriptionFragmentViewModel extends ViewModel {
 
         if (networkHelper.isNetworkAvailable()) {
             postButtonClickable.setValue(false);
-            repositoryApi.postRequestForReview(productId, new ReviewRequest(rate, text), postReviewResponse);
+            repositoryApi.postRequestForReview("Token " + sharedPreferences.getString(USER_TOKEN_SP, ""), productId, new ReviewRequest(rate, text), postReviewResponse);
         } else {
             internetConnectionError.call();
         }
 
     }
 
-    public void shouldSignEvent()
-    {
+    public void shouldSignEvent() {
         shouldSignEvent.call();
     }
 
-    public void authorizationClick()
-    {
+    public void authorizationClick() {
         authorizationEvent.call();
     }
 
-    public void  logoutClick()
-    {
+    public void logoutClick() {
         logoutClickEvent.call();
     }
 

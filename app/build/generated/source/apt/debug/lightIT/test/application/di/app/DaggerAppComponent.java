@@ -24,6 +24,8 @@ import lightIT.test.application.app.home.MainActivity;
 import lightIT.test.application.app.home.MainActivity_MembersInjector;
 import lightIT.test.application.app.home.ProductFragment;
 import lightIT.test.application.app.home.ProductFragment_MembersInjector;
+import lightIT.test.application.app.home.RegistrationFragment;
+import lightIT.test.application.app.home.RegistrationFragment_MembersInjector;
 import lightIT.test.application.app.home.adapter.ProductRecyclerAdapter;
 import lightIT.test.application.app.splash.SplashActivity;
 import lightIT.test.application.app.splash.SplashActivity_MembersInjector;
@@ -44,6 +46,9 @@ import lightIT.test.application.di.home.product.ProductFragmentModule;
 import lightIT.test.application.di.home.product.ProductFragmentModule_ProvideProductAdapterFactory;
 import lightIT.test.application.di.home.product.ProductFragmentModule_ProvideProductListListenerFactory;
 import lightIT.test.application.di.home.product.ProductFragmentModule_ProvideViewModelFactory;
+import lightIT.test.application.di.home.registration.RegistrationFragmentComponent;
+import lightIT.test.application.di.home.registration.RegistrationFragmentModule;
+import lightIT.test.application.di.home.registration.RegistrationFragmentModule_ProvideViewModelFactory;
 import lightIT.test.application.di.splash.SplashActivityComponent;
 import lightIT.test.application.di.splash.SplashModule;
 import lightIT.test.application.di.splash.SplashModule_ProvideSplashViewModelFactory;
@@ -58,6 +63,9 @@ import lightIT.test.application.viewmodel.LoginFragmentViewModel_MembersInjector
 import lightIT.test.application.viewmodel.ProductFragmentViewModel;
 import lightIT.test.application.viewmodel.ProductFragmentViewModel_Factory;
 import lightIT.test.application.viewmodel.ProductFragmentViewModel_MembersInjector;
+import lightIT.test.application.viewmodel.RegistrationFragmentViewModel;
+import lightIT.test.application.viewmodel.RegistrationFragmentViewModel_Factory;
+import lightIT.test.application.viewmodel.RegistrationFragmentViewModel_MembersInjector;
 import lightIT.test.application.viewmodel.SplashActivityViewModel;
 import lightIT.test.application.viewmodel.SplashActivityViewModel_Factory;
 import lightIT.test.application.viewmodel.SplashActivityViewModel_MembersInjector;
@@ -290,6 +298,9 @@ public final class DaggerAppComponent implements AppComponent {
 
     private Provider<LoginFragmentComponent.Builder> loginFragmentComponentBuilderProvider;
 
+    private Provider<RegistrationFragmentComponent.Builder>
+        registrationFragmentComponentBuilderProvider;
+
     private MainActivityComponentImpl(MainActivityComponentBuilder builder) {
       initialize(builder);
     }
@@ -298,10 +309,11 @@ public final class DaggerAppComponent implements AppComponent {
         getMapOfClassOfAndProviderOfFactoryOf() {
       return MapBuilder
           .<Class<? extends Fragment>, Provider<AndroidInjector.Factory<? extends Fragment>>>
-              newMapBuilder(3)
+              newMapBuilder(4)
           .put(ProductFragment.class, (Provider) productFragmentComponentBuilderProvider)
           .put(DescriptionFragment.class, (Provider) descriptionFragmentComponentBuilderProvider)
           .put(LoginFragment.class, (Provider) loginFragmentComponentBuilderProvider)
+          .put(RegistrationFragment.class, (Provider) registrationFragmentComponentBuilderProvider)
           .build();
     }
 
@@ -331,6 +343,13 @@ public final class DaggerAppComponent implements AppComponent {
             @Override
             public LoginFragmentComponent.Builder get() {
               return new LoginFragmentComponentBuilder();
+            }
+          };
+      this.registrationFragmentComponentBuilderProvider =
+          new Provider<RegistrationFragmentComponent.Builder>() {
+            @Override
+            public RegistrationFragmentComponent.Builder get() {
+              return new RegistrationFragmentComponentBuilder();
             }
           };
     }
@@ -540,6 +559,68 @@ public final class DaggerAppComponent implements AppComponent {
         return instance;
       }
     }
+
+    private final class RegistrationFragmentComponentBuilder
+        extends RegistrationFragmentComponent.Builder {
+      private RegistrationFragmentModule registrationFragmentModule;
+
+      private RegistrationFragment seedInstance;
+
+      @Override
+      public RegistrationFragmentComponent build() {
+        if (registrationFragmentModule == null) {
+          this.registrationFragmentModule = new RegistrationFragmentModule();
+        }
+        if (seedInstance == null) {
+          throw new IllegalStateException(
+              RegistrationFragment.class.getCanonicalName() + " must be set");
+        }
+        return new RegistrationFragmentComponentImpl(this);
+      }
+
+      @Override
+      public void seedInstance(RegistrationFragment arg0) {
+        this.seedInstance = Preconditions.checkNotNull(arg0);
+      }
+    }
+
+    private final class RegistrationFragmentComponentImpl implements RegistrationFragmentComponent {
+      private RegistrationFragmentModule registrationFragmentModule;
+
+      private RegistrationFragment seedInstance;
+
+      private RegistrationFragmentComponentImpl(RegistrationFragmentComponentBuilder builder) {
+        initialize(builder);
+      }
+
+      private RegistrationFragmentViewModel getRegistrationFragmentViewModel() {
+        return RegistrationFragmentModule_ProvideViewModelFactory.proxyProvideViewModel(
+            registrationFragmentModule,
+            seedInstance,
+            DaggerAppComponent.this.provideViewModelFactoryProvider.get());
+      }
+
+      @SuppressWarnings("unchecked")
+      private void initialize(final RegistrationFragmentComponentBuilder builder) {
+        this.registrationFragmentModule = builder.registrationFragmentModule;
+        this.seedInstance = builder.seedInstance;
+      }
+
+      @Override
+      public void inject(RegistrationFragment arg0) {
+        injectRegistrationFragment(arg0);
+      }
+
+      private RegistrationFragment injectRegistrationFragment(RegistrationFragment instance) {
+        RegistrationFragment_MembersInjector.injectViewModel(
+            instance, getRegistrationFragmentViewModel());
+        RegistrationFragment_MembersInjector.injectNetworkHelper(
+            instance, DaggerAppComponent.this.provideNetworkHelperProvider.get());
+        RegistrationFragment_MembersInjector.injectSharedPreferences(
+            instance, DaggerAppComponent.this.provideSharedPreferencesProvider.get());
+        return instance;
+      }
+    }
   }
 
   private final class ViewModelComponentBuilder implements ViewModelComponent.Builder {
@@ -576,6 +657,12 @@ public final class DaggerAppComponent implements AppComponent {
           DescriptionFragmentViewModel_Factory.newDescriptionFragmentViewModel());
     }
 
+    @Override
+    public RegistrationFragmentViewModel registrationFragmentViewModel() {
+      return injectRegistrationFragmentViewModel(
+          RegistrationFragmentViewModel_Factory.newRegistrationFragmentViewModel());
+    }
+
     private SplashActivityViewModel injectSplashActivityViewModel(
         SplashActivityViewModel instance) {
       SplashActivityViewModel_MembersInjector.injectRepositoryApi(
@@ -603,6 +690,17 @@ public final class DaggerAppComponent implements AppComponent {
       DescriptionFragmentViewModel_MembersInjector.injectRepositoryApi(
           instance, DaggerAppComponent.this.provideServerApiProvider.get());
       DescriptionFragmentViewModel_MembersInjector.injectNetworkHelper(
+          instance, DaggerAppComponent.this.provideNetworkHelperProvider.get());
+      DescriptionFragmentViewModel_MembersInjector.injectSharedPreferences(
+          instance, DaggerAppComponent.this.provideSharedPreferencesProvider.get());
+      return instance;
+    }
+
+    private RegistrationFragmentViewModel injectRegistrationFragmentViewModel(
+        RegistrationFragmentViewModel instance) {
+      RegistrationFragmentViewModel_MembersInjector.injectRepositoryApi(
+          instance, DaggerAppComponent.this.provideServerApiProvider.get());
+      RegistrationFragmentViewModel_MembersInjector.injectNetworkHelper(
           instance, DaggerAppComponent.this.provideNetworkHelperProvider.get());
       return instance;
     }

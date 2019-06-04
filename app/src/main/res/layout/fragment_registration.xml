@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="contentDescription">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="lightIT.test.application.viewmodel.RegistrationFragmentViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+
+        <variable
+            name="handler"
+            type="lightIT.test.application.app.home.RegistrationFragment" />
+
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_background">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/headerBackground"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/headerResizer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.12" />
+
+            <ImageView
+                android:id="@+id/backArrow"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:elevation="3dp"
+                android:onClick="@{ () -> handler.clickBackButton()}"
+                android:src="@drawable/ic_back_ripple"
+                app:layout_constraintBottom_toBottomOf="@+id/textPricing"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textPricing" />
+
+            <TextView
+                android:id="@+id/textPricing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="3dp"
+                android:text="@string/registration"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.411"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.323"
+            app:layout_constraintWidth_percent="0.75" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/registrationViewsWrap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/etUsername"
+                style="@style/LoginField"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/hint_username"
+                android:inputType="textWebEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/etPassword"
+                app:layout_constraintDimensionRatio="26:3.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.8" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                style="@style/LoginField"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="24dp"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_h_1"
+                app:layout_constraintDimensionRatio="26:3.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.8" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_btn_blue_border_rounded"
+                android:text="@{viewModel.getRegistrationButtonClickable() ? @string/submit_review : &quot;&quot;}"
+                android:clickable="@{viewModel.getRegistrationButtonClickable()}"
+                android:onClick="@{() -> viewModel.sendRequestForRegistration(etUsername.getText().toString(), etPassword.getText().toString())}"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintDimensionRatio="26:3.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_h_1"
+                app:layout_constraintWidth_percent="0.8" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/progressBar"
+                style="@style/AVLoadingIndicatorView.Small"
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:elevation="3dp"
+                android:visibility="@{viewModel.getRegistrationButtonClickable() ? view.GONE : view.VISIBLE}"
+                app:indicatorName="BallPulseIndicator"
+                app:layout_constraintBottom_toBottomOf="@+id/btnLogin"
+                app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+                app:layout_constraintStart_toStartOf="@+id/btnLogin"
+                app:layout_constraintTop_toTopOf="@+id/btnLogin" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_h_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.78" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

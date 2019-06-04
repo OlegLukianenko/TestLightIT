@@ -19,6 +19,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
 
+    public static final String USER_TOKEN_SP = "user_token";
+
     @Override
     protected int getLayout() {
         return R.layout.activity_main;

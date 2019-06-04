@@ -29,4 +29,7 @@ public interface ServerApi {
     @POST("/api/login/")
     Call<LoginResponse> sendLoginRequest(@Body LoginRequest loginRequest);
 
+    @POST("/api/register/")
+    Call<LoginResponse> sendRegistrationRequest(@Body LoginRequest loginRequest);
+
 }

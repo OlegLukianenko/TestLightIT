@@ -17,8 +17,10 @@ public interface RepositoryApi {
     void getProductListFromApi (MutableLiveData<ResponseWrap<List<Product>>> userMutableLiveData);
     void getReviewListFromApi (int productId, MutableLiveData<ResponseWrap<List<Review>>> reviewMutableLiveData);
 
-    void postRequestForReview(int productId, ReviewRequest  reviewRequest, MutableLiveData<ResponseWrap<ReviewResponse>> reviewResponseMutableLiveData);
+    void postRequestForReview(String token, int productId, ReviewRequest  reviewRequest, MutableLiveData<ResponseWrap<ReviewResponse>> reviewResponseMutableLiveData);
 
     void sendLoginRequest(LoginRequest loginRequest, MutableLiveData<ResponseWrap<LoginResponse>> loginResponseMutableLiveData);
+
+    void sendRegistrationRequest(LoginRequest loginRequest, MutableLiveData<ResponseWrap<LoginResponse>> registrationResponseMutableLiveData);
 
 }

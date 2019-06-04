@@ -16,7 +16,7 @@ import lightIT.test.application.databinding.ReviewRecyclerItemBinding;
 public class ReviewRecyclerAdapter extends BaseRecyclerAdapter<ReviewRecyclerItemBinding, Review, ReviewViewHolder> {
 
     @Inject
-    public ReviewRecyclerAdapter( ) {
+    public ReviewRecyclerAdapter() {
     }
 
     @Override

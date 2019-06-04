@@ -20,6 +20,7 @@ import lightIT.test.application.databinding.ActivitySplashBindingImpl;
 import lightIT.test.application.databinding.FragmentDescriptionBindingImpl;
 import lightIT.test.application.databinding.FragmentLoginBindingImpl;
 import lightIT.test.application.databinding.FragmentProductBindingImpl;
+import lightIT.test.application.databinding.FragmentRegistrationBindingImpl;
 import lightIT.test.application.databinding.LayoutDescriptionProgressBarBindingImpl;
 import lightIT.test.application.databinding.LayoutProdustProgressBarBindingImpl;
 import lightIT.test.application.databinding.LayoutSnackBarBindingImpl;
@@ -37,17 +38,19 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_FRAGMENTPRODUCT = 5;
 
-  private static final int LAYOUT_LAYOUTDESCRIPTIONPROGRESSBAR = 6;
+  private static final int LAYOUT_FRAGMENTREGISTRATION = 6;
 
-  private static final int LAYOUT_LAYOUTPRODUSTPROGRESSBAR = 7;
+  private static final int LAYOUT_LAYOUTDESCRIPTIONPROGRESSBAR = 7;
 
-  private static final int LAYOUT_LAYOUTSNACKBAR = 8;
+  private static final int LAYOUT_LAYOUTPRODUSTPROGRESSBAR = 8;
 
-  private static final int LAYOUT_PRODUCTRECYCLERITEM = 9;
+  private static final int LAYOUT_LAYOUTSNACKBAR = 9;
 
-  private static final int LAYOUT_REVIEWRECYCLERITEM = 10;
+  private static final int LAYOUT_PRODUCTRECYCLERITEM = 10;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(10);
+  private static final int LAYOUT_REVIEWRECYCLERITEM = 11;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(11);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
@@ -55,6 +58,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.fragment_description, LAYOUT_FRAGMENTDESCRIPTION);
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.fragment_login, LAYOUT_FRAGMENTLOGIN);
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.fragment_product, LAYOUT_FRAGMENTPRODUCT);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.fragment_registration, LAYOUT_FRAGMENTREGISTRATION);
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.layout_description_progress_bar, LAYOUT_LAYOUTDESCRIPTIONPROGRESSBAR);
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.layout_produst_progress_bar, LAYOUT_LAYOUTPRODUSTPROGRESSBAR);
     INTERNAL_LAYOUT_ID_LOOKUP.put(lightIT.test.application.R.layout.layout_snack_bar, LAYOUT_LAYOUTSNACKBAR);
@@ -100,6 +104,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new FragmentProductBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for fragment_product is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTREGISTRATION: {
+          if ("layout/fragment_registration_0".equals(tag)) {
+            return new FragmentRegistrationBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_registration is invalid. Received: " + tag);
         }
         case  LAYOUT_LAYOUTDESCRIPTIONPROGRESSBAR: {
           if ("layout/layout_description_progress_bar_0".equals(tag)) {
@@ -189,7 +199,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(10);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(11);
 
     static {
       sKeys.put("layout/activity_main_0", lightIT.test.application.R.layout.activity_main);
@@ -197,6 +207,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/fragment_description_0", lightIT.test.application.R.layout.fragment_description);
       sKeys.put("layout/fragment_login_0", lightIT.test.application.R.layout.fragment_login);
       sKeys.put("layout/fragment_product_0", lightIT.test.application.R.layout.fragment_product);
+      sKeys.put("layout/fragment_registration_0", lightIT.test.application.R.layout.fragment_registration);
       sKeys.put("layout/layout_description_progress_bar_0", lightIT.test.application.R.layout.layout_description_progress_bar);
       sKeys.put("layout/layout_produst_progress_bar_0", lightIT.test.application.R.layout.layout_produst_progress_bar);
       sKeys.put("layout/layout_snack_bar_0", lightIT.test.application.R.layout.layout_snack_bar);
