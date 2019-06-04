@@ -1661,7 +1661,7 @@
     <string name="enable_permission">Enable location permission</string>
     <string name="hint_password">Password</string>
     <string name="hint_username">Username</string>
-    <string name="icon_url">http://smktesting.herokuapp.com/static/</string>
+    <string name="icon_url">https://smktesting.herokuapp.com/static/</string>
     <string name="internet_connected">Connection restored</string>
     <string name="internet_connection">Please, check your internet connection.</string>
     <string name="internet_not_available">No connection</string>

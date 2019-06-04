@@ -24,7 +24,7 @@ public class DataModule {
     @Singleton
     Retrofit provideRetrofit(OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
-                .baseUrl("http://smktesting.herokuapp.com//")
+                .baseUrl("https://smktesting.herokuapp.com//")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
